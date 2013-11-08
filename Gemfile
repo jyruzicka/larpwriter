@@ -13,17 +13,18 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'slim-rails'
+gem 'simple_form'
 
 # backend
 gem 'pg'
 gem 'devise'
+gem 'quicklog'
 
 group :development, :test do
   gem 'dotenv-rails'
 end
 
 group :development do
-  gem 'quicklog'
   gem 'quiet_assets'
   gem 'jazz_hands'
 

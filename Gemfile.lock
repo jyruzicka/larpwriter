@@ -196,6 +196,7 @@ GEM
     scss-lint (0.7.0)
       colorize
       sass
+    simple_form (1.4.1)
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
@@ -260,6 +261,7 @@ DEPENDENCIES
   rails (= 4.0.1)
   sass-rails (~> 4.0.0)
   scss-lint (= 0.7.0)
+  simple_form
   slim-rails
   turbolinks
   uglifier (>= 1.3.0)
