@@ -15,6 +15,10 @@
       dd= @player.last_name
       dt Email
       dd= mail_to @player.email
+      dt Pc
+      dd
+        - if @player.pcs.any?
+          = links_to_assets @player.pcs
       dt Phone numbers
       dd= @player.phone_numbers
       dt Postal address

@@ -10,7 +10,7 @@
     .thead
       - index_attribute_names(asset_type).each do |attribute_name|
         th
-          - unless attribute_name == :picture
+          - unless attribute_name.to_s =~ /picture/
             = attribute_name.to_s.humanize
       th Actions
 
@@ -19,14 +19,17 @@
         tr
           - index_attribute_names(asset_type).each do |attribute_name|
             td
+              - value = asset.send attribute_name
               - if attribute_name == :email
-                = mail_to asset.send(attribute_name)
-              - elsif attribute_name == :picture
-                - picture = asset.send attribute_name
-                - if picture.exists?
+                = mail_to value
+              - elsif attribute_name.to_s =~ /picture/
+                - picture = value
+                - if picture.try :exists?
                   = image_tag picture.url(:thumbnail)
+              - elsif attribute_name == :player_name && value.present?
+                = link_to value, [@larp, asset.player]
               - else
-                = asset.send attribute_name
+                = value
           td.actions-icons
             = link_to [@larp, asset] do
               span.glyphicon.glyphicon-eye-open

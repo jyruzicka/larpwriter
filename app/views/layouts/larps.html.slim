@@ -7,25 +7,25 @@ html
     .container
       = render "layouts/flash_messages", flash: flash
 
-      ol.breadcrumb.breadcrumb-larp
-        - if controller_name == 'larps'
-          li.active= @larp.name
-        - else
-          li= link_to @larp.name, larp_path(@larp)
-          - if action_name == 'index'
-            li.active= controller_name
+      .col-sm-9
+        ol.breadcrumb.breadcrumb-larp
+          - if controller_name == 'larps'
+            li.active= @larp.name
           - else
-            li= link_to controller_name, [@larp, controller_name]
-            - if action_name == 'show'
-              li.active= current_asset.name
+            li= link_to @larp.name, larp_path(@larp)
+            - if action_name == 'index'
+              li.active= controller_name
             - else
-              - unless current_asset.new_record?
-                li= link_to current_asset.name, [@larp, current_asset]
-              li.active= action_name_for_breadcrumb
+              li= link_to controller_name, [@larp, controller_name]
+              - if action_name == 'show'
+                li.active= current_asset.name
+              - else
+                - unless current_asset.new_record?
+                  li= link_to current_asset.name, [@larp, current_asset]
+                li.active= action_name_for_breadcrumb
+          = yield :asset_actions
 
-        = yield :asset_actions
-
-      .col-sm-9= yield
+        = yield
       .col-sm-3
         .list-group.larp-sidebar
           - %i(pcs players organizers).each do |asset_type_plural|

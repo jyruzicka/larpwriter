@@ -2,6 +2,7 @@ class Player < ActiveRecord::Base
   include HasFirstNameAndLastName
 
   belongs_to :larp
+  has_many :pcs, dependent: :nullify
 
   validates_presence_of :first_name, :larp_id, :email
   validates_format_of   :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
@@ -19,5 +20,17 @@ class Player < ActiveRecord::Base
     "todo"
     #now = Time.now.utc.to_date
     #now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
+  end
+
+  def name_with_pc_names
+    if pcs.any?
+      "#{name} (#{pc_names})"
+    else
+      name
+    end
+  end
+
+  def pc_names
+    pcs.pluck(:name).join(", ")
   end
 end

@@ -44,6 +44,6 @@ class PcsController < ApplicationController
   end
 
   def pc_params
-    params[:pc].permit(:name, :description)
+    params[:pc].permit(:name, :description, :player_id)
   end
 end
