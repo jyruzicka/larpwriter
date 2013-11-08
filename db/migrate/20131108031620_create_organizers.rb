@@ -6,6 +6,7 @@ class CreateOrganizers < ActiveRecord::Migration
       t.string :first_name, null: false
       t.string :last_name
       t.string :email, null: false
+      t.string :phone_numbers
 
       t.timestamps
     end

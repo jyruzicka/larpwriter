@@ -1,0 +1,36 @@
+doctype html
+html
+  head= render "layouts/html_head"
+  body
+    = render "layouts/topbar"
+
+    .container
+      = render "layouts/flash_messages", flash: flash
+
+      ol.breadcrumb.breadcrumb-larp
+        - if controller_name == 'larps'
+          li.active= @larp.name
+        - else
+          li= link_to @larp.name, larp_path(@larp)
+          - if action_name == 'index'
+            li.active= controller_name
+          - else
+            li= link_to controller_name, [@larp, controller_name]
+            - if action_name == 'show'
+              li.active= asset_record.name
+            - else
+              - unless asset_record.new_record?
+                li= link_to asset_record.name, [@larp, asset_record]
+              li.active= action_name_for_breadcrumb
+
+        = yield :asset_actions
+
+      .col-sm-9= yield
+      .col-sm-3
+        .list-group
+          = link_to larp_organizers_path(@larp), class: "list-group-item" do
+            span.badge.add-asset data-action-path="#{new_larp_organizer_path @larp}" +
+            span.badge= @larp.organizers.count
+            |Organizers
+
+    = render "layouts/bottom"

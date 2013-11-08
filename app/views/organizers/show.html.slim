@@ -1,0 +1,17 @@
+= page_title @organizer.first_name, without_heading: true
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", larp_organizer_path(@larp, @organizer), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", edit_larp_organizer_path(@larp, @organizer), class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    dl.dl-horizontal
+      dt First Name
+      dd= @organizer.first_name
+      dt Last Name
+      dd= @organizer.last_name
+      dt Email
+      dd= mail_to @organizer.email
+      dt Phone numbers
+      dd= @organizer.phone_numbers

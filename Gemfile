@@ -11,7 +11,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # frontend
 gem 'jquery-rails'
-gem 'turbolinks'
+gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'simple_form'
 

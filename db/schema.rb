@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20131108040016) do
   create_table "organizers", force: true do |t|
     t.integer  "larp_id"
     t.integer  "user_id"
-    t.string   "first_name", null: false
+    t.string   "first_name",    null: false
     t.string   "last_name"
-    t.string   "email",      null: false
+    t.string   "email",         null: false
+    t.string   "phone_numbers"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

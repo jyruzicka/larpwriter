@@ -1,0 +1,7 @@
+= simple_form_for [@larp, @organizer] do |f|
+  = f.input :first_name, autofocus: true
+  = f.input :last_name
+  = f.input :email
+  = f.input :phone_numbers
+
+  = f.button :submit, class: "btn btn-info"

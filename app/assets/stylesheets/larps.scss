@@ -1,0 +1,23 @@
+.breadcrumb-larp {
+  margin-top: 20px;
+  li.asset-action {
+    float: right !important;
+  }
+  li.asset-action:before {
+    content: "";
+  }
+}
+
+.actions-icons {
+  span {
+    margin-right: 10px;
+  }
+}
+
+.add-asset:hover {
+  background-color: blue;
+}
+
+.panel-asset {
+  font-size: 1.2em;
+}

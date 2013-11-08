@@ -1,0 +1,6 @@
+= page_title "Edit #{@organizer.name}", without_heading: true
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", larp_organizer_path(@larp, @organizer), method: :delete, class: "btn btn-danger btn-xs"
+
+= render "form"

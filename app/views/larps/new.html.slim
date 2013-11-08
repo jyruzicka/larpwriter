@@ -1,5 +1,5 @@
-h1 Create a new larp
+= page_title "Create a new larp"
 
 = simple_form_for @larp do |f|
   = f.input :name, autofocus: true
-  = f.button :submit, "Create"
+  = f.button :submit, "Create", class: "btn btn-info"

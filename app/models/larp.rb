@@ -3,5 +3,7 @@ class Larp < ActiveRecord::Base
 
   validates_presence_of :name
 
+  scope :by_name, -> { order :name }
+
   normalize_attributes :name
 end
