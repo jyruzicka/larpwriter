@@ -18,7 +18,9 @@ html
   body
     = render "layouts/topbar"
 
-    .container= yield
+    .container
+      = render partial: "layouts/flash_messages", flash: flash
+      = yield
 
     = javascript_include_tag "application"
     script{src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"}
