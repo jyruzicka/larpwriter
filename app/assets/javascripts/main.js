@@ -9,4 +9,5 @@ $(function() {
     document.location.href = actionPath;
   });
 
+  $('[data-behaviour~=datepicker]').datepicker();
 });

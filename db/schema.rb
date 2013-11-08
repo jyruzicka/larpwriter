@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108090435) do
+ActiveRecord::Schema.define(version: 20131108115220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,25 @@ ActiveRecord::Schema.define(version: 20131108090435) do
   end
 
   add_index "pcs", ["larp_id"], name: "index_pcs_on_larp_id", using: :btree
+
+  create_table "players", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "larp_id"
+    t.string   "email"
+    t.text     "notes"
+    t.string   "phone_numbers"
+    t.string   "postal_address"
+    t.date     "birth_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "players", ["larp_id"], name: "index_players_on_larp_id", using: :btree
 
   create_table "redactor_assets", force: true do |t|
     t.integer  "user_id"

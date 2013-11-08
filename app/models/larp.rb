@@ -1,6 +1,7 @@
 class Larp < ActiveRecord::Base
   has_many :organizers, dependent: :destroy
   has_many :pcs,        dependent: :destroy
+  has_many :players,    dependent: :destroy
 
   validates_presence_of :name
 

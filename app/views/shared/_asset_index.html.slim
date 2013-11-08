@@ -9,7 +9,9 @@
 
     .thead
       - index_attribute_names(asset_type).each do |attribute_name|
-        th= attribute_name.to_s.humanize
+        th
+          - unless attribute_name == :picture
+            = attribute_name.to_s.humanize
       th Actions
 
     .tbody
@@ -19,6 +21,10 @@
             td
               - if attribute_name == :email
                 = mail_to asset.send(attribute_name)
+              - elsif attribute_name == :picture
+                - picture = asset.send attribute_name
+                - if picture.exists?
+                  = image_tag picture.url(:thumbnail)
               - else
                 = asset.send attribute_name
           td.actions-icons

@@ -1,0 +1,27 @@
+= page_title @player.name, without_heading: true
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", larp_player_path(@larp, @player), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", edit_larp_player_path(@larp, @player), class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    - if @player.picture.exists?
+      = image_tag @player.picture.url(:medium), class: "pull-right"
+    dl.dl-horizontal
+      dt First name
+      dd= @player.first_name
+      dt Last name
+      dd= @player.last_name
+      dt Email
+      dd= mail_to @player.email
+      dt Phone numbers
+      dd= @player.phone_numbers
+      dt Postal address
+      dd= @player.postal_address
+      dt Age
+      dd
+        - if @player.birth_date
+          #{@player.age} years (#{l @player.birth_date, format: :long})
+      dt Notes
+      dd= @player.notes

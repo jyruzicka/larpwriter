@@ -27,5 +27,6 @@ module Larpwriter
       g.javascripts false
     end
 
+    config.action_controller.action_on_unpermitted_parameters = :raise
   end
 end

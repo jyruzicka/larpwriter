@@ -15,12 +15,14 @@ gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'redactor-rails'
+gem 'bootstrap-datepicker-rails'
 
 # backend
 gem 'pg'
 gem 'devise'
 gem 'quicklog'
 gem 'attribute_normalizer'
+gem 'paperclip'
 
 group :development, :test do
   gem 'dotenv-rails'

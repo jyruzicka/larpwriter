@@ -12,5 +12,6 @@
  *= require bootstrap-flatly
  *= require font-awesome
  *= require redactor-rails
+ *= require bootstrap-datepicker
  *= require_tree .
  */

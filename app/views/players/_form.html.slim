@@ -1,0 +1,14 @@
+= simple_form_for [@larp, @player] do |f|
+  = f.input :first_name, autofocus: true
+  = f.input :last_name
+  = f.input :email
+  = f.input :picture
+  - if @player.picture.exists?
+    = f.check_box :remove_picture
+    |Remove existing picture
+  = f.input :phone_numbers
+  = f.input :postal_address
+  = f.input :birth_date_as_string, label: "Birth date", input_html: { data: { behavior: "datepicker" } }
+  = f.input :notes
+
+  = f.button :submit, class: "btn btn-info"

@@ -17,10 +17,10 @@ html
           - else
             li= link_to controller_name, [@larp, controller_name]
             - if action_name == 'show'
-              li.active= asset_record.name
+              li.active= current_asset.name
             - else
-              - unless asset_record.new_record?
-                li= link_to asset_record.name, [@larp, asset_record]
+              - unless current_asset.new_record?
+                li= link_to current_asset.name, [@larp, current_asset]
               li.active= action_name_for_breadcrumb
 
         = yield :asset_actions
@@ -28,13 +28,10 @@ html
       .col-sm-9= yield
       .col-sm-3
         .list-group.larp-sidebar
-          = link_to larp_pcs_path(@larp), class: "list-group-item #{'active' if controller_name == 'pcs'}" do
-            span.badge.add-asset data-action-path="#{new_larp_pc_path @larp}" +
-            span.badge= @larp.pcs.count
-            |PCs
-          = link_to larp_organizers_path(@larp), class: "list-group-item #{'active' if controller_name == 'organizers'}" do
-            span.badge.add-asset data-action-path="#{new_larp_organizer_path @larp}" +
-            span.badge= @larp.organizers.count
-            |Organizers
+          - %i(pcs players organizers).each do |asset_type_plural|
+            = link_to [@larp, asset_type_plural], class: "list-group-item #{'active' if controller_name == asset_type_plural.to_s}" do
+              span.badge.add-asset data-action-path="#{polymorphic_path [:new, @larp, asset_type_plural.to_s.chop]}" +
+              span.badge= @larp.send(asset_type_plural).count
+              = asset_type_plural.to_s.humanize
 
     = render "layouts/bottom"

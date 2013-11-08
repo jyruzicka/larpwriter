@@ -5,6 +5,7 @@ Larpwriter::Application.routes.draw do
 
   resources :larps do
     resources :pcs
+    resources :players
     resources :organizers
   end
 end
