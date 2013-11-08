@@ -33,6 +33,7 @@ group :development do
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'guard-ctags-bundler'
+  gem 'guard-test'
 
   gem 'overcommit', require: false
   gem 'scss-lint', '0.7.0', require: false
