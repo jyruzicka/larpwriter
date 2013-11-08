@@ -1,10 +1,5 @@
 class OrganizersController < ApplicationController
-  layout "larps"
-
-  before_action :authenticate_user!
-  before_action :get_larp
-  before_action :authorize_user!
-  before_action :get_organizer, only: [:show, :edit, :update, :destroy]
+  include IsAsset
 
   def index
     @organizers = @larp.organizers.by_name
@@ -48,11 +43,7 @@ class OrganizersController < ApplicationController
 
   private
 
-  def get_larp
-    @larp = Larp.find params[:larp_id]
-  end
-
-  def get_organizer
+  def get_asset
     @organizer = @larp.organizers.find params[:id]
   end
 

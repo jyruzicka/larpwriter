@@ -27,8 +27,12 @@ html
 
       .col-sm-9= yield
       .col-sm-3
-        .list-group
-          = link_to larp_organizers_path(@larp), class: "list-group-item" do
+        .list-group.larp-sidebar
+          = link_to larp_pcs_path(@larp), class: "list-group-item #{'active' if controller_name == 'pcs'}" do
+            span.badge.add-asset data-action-path="#{new_larp_pc_path @larp}" +
+            span.badge= @larp.pcs.count
+            |PCs
+          = link_to larp_organizers_path(@larp), class: "list-group-item #{'active' if controller_name == 'organizers'}" do
             span.badge.add-asset data-action-path="#{new_larp_organizer_path @larp}" +
             span.badge= @larp.organizers.count
             |Organizers

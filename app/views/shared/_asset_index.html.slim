@@ -1,0 +1,30 @@
+= content_for :asset_actions
+  li.asset-action= link_to "add one", [:new, @larp, asset_type], class: "btn btn-info btn-xs"
+
+- if assets.count.zero?
+  p There is no #{controller_name} yet.
+
+- else
+  table.table.table-striped.table-hover.table-bordered
+
+    .thead
+      - index_attribute_names(asset_type).each do |attribute_name|
+        th= attribute_name.to_s.humanize
+      th Actions
+
+    .tbody
+      - assets.each do |asset|
+        tr
+          - index_attribute_names(asset_type).each do |attribute_name|
+            td
+              - if attribute_name == :email
+                = mail_to asset.send(attribute_name)
+              - else
+                = asset.send attribute_name
+          td.actions-icons
+            = link_to [@larp, asset] do
+              span.glyphicon.glyphicon-eye-open
+            = link_to [:edit, @larp, asset] do
+              span.glyphicon.glyphicon-pencil
+            = link_to [@larp, asset], method: :delete, data: {confirm: "Are you sure?"} do
+              span.glyphicon.glyphicon-trash

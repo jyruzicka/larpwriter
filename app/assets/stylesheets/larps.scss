@@ -14,8 +14,16 @@
   }
 }
 
-.add-asset:hover {
-  background-color: blue;
+.larp-sidebar {
+  .add-asset {
+    display: none;
+    background-color: blue;
+  }
+  .list-group-item:hover {
+    .add-asset {
+      display: inline;
+    }
+  }
 }
 
 .panel-asset {

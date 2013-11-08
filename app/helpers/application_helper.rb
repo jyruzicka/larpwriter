@@ -8,11 +8,6 @@ module ApplicationHelper
     end
   end
 
-  # hackish but useful!
-  def asset_record
-    @asset_record ||= @organizer
-  end
-
   def bootstrap_class_for flash_type
     case flash_type
     when :success
