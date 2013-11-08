@@ -11,7 +11,7 @@ class UserRegistrationTest < ActionDispatch::IntegrationTest
     visit "/"
     click_link "Sign up"
 
-    fill_in "user_email", with: "jack@example.com"
+    fill_in "user_email", with: "alice@example.com"
     fill_in "user_password", with: "secret"
     fill_in "user_password_confirmation", with: "secret"
     click_button "Sign up"

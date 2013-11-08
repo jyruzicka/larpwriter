@@ -30,4 +30,12 @@ class ActiveSupport::TestCase
   def joe
     users :joe
   end
+
+  def joe_larp
+    larps :joe_larp
+  end
+
+  def jack
+    users :jack
+  end
 end

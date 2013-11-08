@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'pg'
 gem 'devise'
 gem 'quicklog'
+gem 'attribute_normalizer'
 
 group :development, :test do
   gem 'dotenv-rails'
