@@ -24,6 +24,17 @@ class LarpsController < ApplicationController
     @larp = Larp.find params[:id]
   end
 
+  def edit
+  end
+
+  def update
+    if @larp.update larp_params
+      redirect_to larp_path(@larp), notice: "Larp successfully edited"
+    else
+      render :new
+    end
+  end
+
   private
 
   def get_larp
