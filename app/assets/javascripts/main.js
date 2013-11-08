@@ -8,4 +8,5 @@ $(function() {
     var actionPath = $(this).data("action-path");
     document.location.href = actionPath;
   });
+
 });

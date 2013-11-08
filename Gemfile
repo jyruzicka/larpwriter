@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'simple_form'
+gem 'redactor-rails'
 
 # backend
 gem 'pg'

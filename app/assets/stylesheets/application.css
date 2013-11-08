@@ -11,5 +11,6 @@
  *= require_self
  *= require bootstrap-flatly
  *= require font-awesome
+ *= require redactor-rails
  *= require_tree .
  */

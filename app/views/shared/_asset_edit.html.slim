@@ -1,0 +1,6 @@
+= page_title "Edit #{asset.name}", without_heading: true
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", [@larp, asset], method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+
+= render "form"

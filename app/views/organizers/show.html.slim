@@ -1,4 +1,4 @@
-= page_title @organizer.first_name, without_heading: true
+= page_title @organizer.name, without_heading: true
 
 = content_for :asset_actions
   li.asset-action= link_to "remove", larp_organizer_path(@larp, @organizer), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"

@@ -1,5 +1,5 @@
 = simple_form_for [@larp, @pc] do |f|
   = f.input :name, autofocus: true
-  = f.input :description
+  = f.input :description, input_html: { class: "redactor" }
 
   = f.button :submit, class: "btn btn-info"
