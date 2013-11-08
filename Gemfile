@@ -16,6 +16,7 @@ gem 'slim-rails'
 
 # backend
 gem 'pg'
+gem 'devise'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -39,4 +40,5 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'launchy'
 end

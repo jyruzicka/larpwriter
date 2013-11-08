@@ -32,4 +32,6 @@ Larpwriter::Application.configure do
 
   # from http://railsillustrated.com/logger-tricks.html
   config.logger = Logger.new Rails.root.join("log", Rails.env + ".log"), 3, 5 * 1024 * 1024
+
+  config.action_mailer.default_url_options = { host: ENV['HOST'] }
 end
