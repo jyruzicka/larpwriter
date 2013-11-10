@@ -1,4 +1,4 @@
-= page_title @player.name, without_heading: true
+= content_for :html_title, @player.name
 
 = content_for :asset_actions
   li.asset-action= link_to "remove", larp_player_path(@larp, @player), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"

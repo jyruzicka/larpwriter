@@ -1,4 +1,4 @@
-= page_title @larp.name, without_heading: true
+= content_for :html_title, @larp.name
 
 = content_for :asset_actions
   li.asset-action= link_to "edit", edit_larp_path(@larp), class: "btn btn-info btn-xs"

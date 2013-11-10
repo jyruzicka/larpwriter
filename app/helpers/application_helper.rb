@@ -23,8 +23,4 @@ module ApplicationHelper
     end
   end
 
-  def page_title title, options={}
-    content_for :page_title, title
-    content_tag(:h1, title) unless options[:without_heading]
-  end
 end
