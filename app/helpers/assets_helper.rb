@@ -6,14 +6,20 @@ module AssetsHelper
 
   # hackish but useful!
   def current_asset
-    @current_asset ||= @organizer || @pc || @player
+    @current_asset ||= @organizer || @pc || @npc || @player || @npc_player
+  end
+
+  def current_asset_model_name
+    controller_name.chop.camelize.constantize.model_name.human
   end
 
   def index_attribute_names asset_type
     case asset_type
-    when :pc        then %i(player_picture name player_name)
-    when :player    then %i(picture first_name last_name email phone_numbers)
-    when :organizer then %i(first_name last_name email phone_numbers)
+    when :pc         then %i(player_picture name player_name)
+    when :npc        then %i(npc_player_picture name npc_player_name)
+    when :player     then %i(picture first_name last_name email phone_numbers)
+    when :npc_player then %i(picture first_name last_name email phone_numbers)
+    when :organizer  then %i(first_name last_name email phone_numbers)
     end
   end
 

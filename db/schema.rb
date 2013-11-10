@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108122444) do
+ActiveRecord::Schema.define(version: 20131110043432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,37 @@ ActiveRecord::Schema.define(version: 20131108122444) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "npc_players", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "larp_id"
+    t.string   "email"
+    t.text     "notes"
+    t.string   "phone_numbers"
+    t.string   "postal_address"
+    t.date     "birth_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "npc_players", ["larp_id"], name: "index_npc_players_on_larp_id", using: :btree
+
+  create_table "npcs", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "larp_id"
+    t.integer  "npc_player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "npcs", ["larp_id"], name: "index_npcs_on_larp_id", using: :btree
+  add_index "npcs", ["npc_player_id"], name: "index_npcs_on_npc_player_id", using: :btree
 
   create_table "organizers", force: true do |t|
     t.integer  "larp_id"

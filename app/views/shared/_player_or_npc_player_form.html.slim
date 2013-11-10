@@ -1,0 +1,18 @@
+= simple_form_for [@larp, player_or_npc_player] do |f|
+  = f.input :first_name, autofocus: true
+  = f.input :last_name
+  = f.input :email
+  = f.input :picture
+  - if player_or_npc_player.picture.exists?
+    = f.check_box :remove_picture
+    |Remove existing picture
+  - if player_or_npc_player.is_a? Player
+    = f.input :pc_or_npc_names, disabled: true, hint: "to add or remove a PC, do it from the corresponding PC edit page", label: "PCs"
+  - else
+    = f.input :pc_or_npc_names, disabled: true, hint: "to add or remove a NPC, do it from the corresponding NPC edit page", label: "NPCs"
+  = f.input :phone_numbers
+  = f.input :postal_address
+  = f.input :birth_date_as_string, label: "Birth date", input_html: { data: { behavior: "datepicker" } }
+  = f.input :notes
+
+  = f.button :submit, class: "btn btn-info"

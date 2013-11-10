@@ -1,0 +1,29 @@
+= content_for :html_title, pc_or_npc.name
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", [@larp, pc_or_npc], method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", [:edit, @larp, pc_or_npc], class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    - if pc_or_npc.is_a? Pc
+      - if pc_or_npc.player_picture.try :exists?
+        = image_tag pc_or_npc.player_picture.url(:medium), class: "pull-right"
+    - else
+      - if pc_or_npc.npc_player_picture.try :exists?
+        = image_tag pc_or_npc.npc_player_picture.url(:medium), class: "pull-right"
+    dl.dl-horizontal
+      dt Name
+      dd= pc_or_npc.name
+      - if pc_or_npc.is_a? Pc
+        dt Player
+        dd
+          - if pc_or_npc.player
+            = link_to pc_or_npc.player_name, [@larp, pc_or_npc.player]
+      - else
+        dt NPC Player
+        dd
+          - if pc_or_npc.npc_player
+            = link_to pc_or_npc.npc_player_name, [@larp, pc_or_npc.npc_player]
+      dt Description
+      dd= pc_or_npc.description.html_safe

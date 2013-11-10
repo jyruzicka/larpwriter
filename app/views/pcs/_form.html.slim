@@ -1,6 +1,6 @@
 = simple_form_for [@larp, @pc] do |f|
   = f.input :name, autofocus: true
   = f.input :description, input_html: { class: "redactor" }
-  = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_names
+  = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
 
   = f.button :submit, class: "btn btn-info"

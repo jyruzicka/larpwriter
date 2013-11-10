@@ -1,10 +1,10 @@
-= content_for :html_title, controller_name
+= content_for :html_title, current_asset_model_name.pluralize
 
 = content_for :asset_actions
   li.asset-action= link_to "add one", [:new, @larp, asset_type], class: "btn btn-info btn-xs"
 
 - if assets.count.zero?
-  p There is no #{controller_name} yet.
+  p There is no #{current_asset_model_name} yet.
 
 - else
   table.table.table-striped.table-hover.table-bordered
@@ -30,6 +30,8 @@
                   = image_tag picture.url(:thumbnail)
               - elsif attribute_name == :player_name && value.present?
                 = link_to value, [@larp, asset.player]
+              - elsif attribute_name == :npc_player_name && value.present?
+                = link_to value, [@larp, asset.npc_player]
               - else
                 = value
           td.actions-icons

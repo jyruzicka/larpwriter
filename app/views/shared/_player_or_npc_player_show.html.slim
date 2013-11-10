@@ -1,0 +1,31 @@
+= content_for :html_title, player_or_npc_player.name
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", [@larp, player_or_npc_player], method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", [:edit, @larp, player_or_npc_player], class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    - if player_or_npc_player.picture.exists?
+      = image_tag player_or_npc_player.picture.url(:medium), class: "pull-right"
+    dl.dl-horizontal
+      dt First name
+      dd= player_or_npc_player.first_name
+      dt Last name
+      dd= player_or_npc_player.last_name
+      dt Email
+      dd= mail_to player_or_npc_player.email
+      dt Pc
+      dd
+        - if player_or_npc_player.pcs_or_npcs.any?
+          = links_to_assets player_or_npc_player.pcs_or_npcs
+      dt Phone numbers
+      dd= player_or_npc_player.phone_numbers
+      dt Postal address
+      dd= player_or_npc_player.postal_address
+      dt Age
+      dd
+        - if player_or_npc_player.birth_date
+          #{player_or_npc_player.age} years (#{l player_or_npc_player.birth_date, format: :long})
+      dt Notes
+      dd= player_or_npc_player.notes
