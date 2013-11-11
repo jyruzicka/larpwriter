@@ -6,7 +6,7 @@ module AssetsHelper
 
   # hackish but useful!
   def current_asset
-    @current_asset ||= @organizer || @pc || @npc || @player || @npc_player
+    @current_asset ||= @organizer || @pc || @npc || @player || @npc_player || @document
   end
 
   def current_asset_model_name
@@ -19,6 +19,7 @@ module AssetsHelper
     when :npc        then %i(npc_player_picture name npc_player_name)
     when :player     then %i(picture first_name last_name email phone_numbers)
     when :npc_player then %i(picture first_name last_name email phone_numbers)
+    when :document   then %i(name file)
     when :organizer  then %i(first_name last_name email phone_numbers)
     end
   end

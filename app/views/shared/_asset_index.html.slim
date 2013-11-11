@@ -24,6 +24,10 @@
               - value = asset.send attribute_name
               - if attribute_name == :email
                 = mail_to value
+              - elsif attribute_name == :file
+                - file = value
+                - if file.try :exists?
+                  = link_to asset.send(:file_file_name), file.url
               - elsif attribute_name.to_s =~ /picture/
                 - picture = value
                 - if picture.try :exists?

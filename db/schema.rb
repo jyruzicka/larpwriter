@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110043432) do
+ActiveRecord::Schema.define(version: 20131111142458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "documents", force: true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "larp_id"
+    t.boolean  "is_included_in_all_pcs"
+    t.boolean  "is_included_in_all_npcs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "documents", ["larp_id"], name: "index_documents_on_larp_id", using: :btree
 
   create_table "larps", force: true do |t|
     t.string   "name",       null: false

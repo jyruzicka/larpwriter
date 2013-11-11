@@ -9,5 +9,6 @@ Larpwriter::Application.routes.draw do
     resources :players
     resources :npc_players
     resources :organizers
+    resources :documents
   end
 end

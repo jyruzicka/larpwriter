@@ -1,0 +1,21 @@
+= content_for :html_title, @document.name
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", larp_document_path(@larp, @document), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", edit_larp_document_path(@larp, @document), class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    dl.dl-horizontal
+      dt Name
+      dd= @document.name
+      dt Is included in all PCs?
+      dd= @document.is_included_in_all_pcs
+      dt Is included in all NPCs?
+      dd= @document.is_included_in_all_npcs
+      dt File
+      dd
+        - if @document.file.exists?
+          = link_to @document.file_file_name, @document.file.url
+      dt Content
+      dd= @document.content

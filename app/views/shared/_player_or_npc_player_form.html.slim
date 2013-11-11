@@ -5,7 +5,7 @@
   = f.input :picture
   - if player_or_npc_player.picture.exists?
     = f.check_box :remove_picture
-    |Remove existing picture
+    |&nbsp;Remove existing picture
   - if player_or_npc_player.is_a? Player
     = f.input :pc_or_npc_names, disabled: true, hint: "to add or remove a PC, do it from the corresponding PC edit page", label: "PCs"
   - else

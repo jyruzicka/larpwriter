@@ -1,0 +1,11 @@
+= simple_form_for [@larp, @document] do |f|
+  = f.input :name, autofocus: true
+  = f.input :is_included_in_all_pcs
+  = f.input :is_included_in_all_npcs
+  = f.input :file
+  - if @document.file.exists?
+    = f.check_box :remove_file
+    |&nbsp;Remove existing file #{@document.file_file_name}
+  = f.input :content, input_html: { class: "redactor" }
+
+  = f.button :submit, class: "btn btn-info"
