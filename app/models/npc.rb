@@ -1,9 +1,9 @@
 class Npc < ActiveRecord::Base
-  include IsPcOrNpc
+  include IsAsset, IsPcOrNpc, HasAttachedPicture
 
-  belongs_to :larp
   belongs_to :npc_player
 
-  delegate :picture, to: :npc_player, prefix: true, allow_nil: true
-  delegate :name,    to: :npc_player, prefix: true, allow_nil: true
+  def player_or_npc_player
+    npc_player
+  end
 end

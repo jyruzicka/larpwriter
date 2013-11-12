@@ -1,0 +1,19 @@
+= simple_form_for [@larp, pc_or_npc] do |f|
+  = f.input :name, autofocus: true
+  = f.input :description, input_html: { class: "redactor" }
+  - if pc_or_npc.is_a? Pc
+    = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
+  - else
+    = f.association :npc_player, collection: @larp.npc_players.by_name, label_method: :name_with_pc_or_npc_names
+  = f.input :attached_picture, label: "Picture"
+  - if pc_or_npc.attached_picture.exists?
+    = f.check_box :remove_attached_picture
+    |&nbsp;Remove existing picture
+
+  h3 Relationships
+  .nested-fields-section
+    = f.simple_fields_for :as_origin_relationships, html: {novalidate: true} do |as_origin_relationship|
+      = render "application/as_origin_relationship_fields", f: as_origin_relationship
+    p.links= link_to_add_association "add a new relationship", f, :as_origin_relationships
+
+  = f.button :submit, class: "btn btn-info"

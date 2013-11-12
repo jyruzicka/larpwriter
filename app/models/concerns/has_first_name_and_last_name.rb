@@ -2,12 +2,12 @@ module HasFirstNameAndLastName
   extend ActiveSupport::Concern
 
   included do
-    scope :by_name, -> { order "first_name, last_name" }
+    include HasName
 
-    normalize_attributes  :first_name, :last_name
-  end
+    before_validation { |asset| asset.name = "#{first_name} #{last_name}".strip }
 
-  def name
-    "#{first_name} #{last_name}".strip
+    validates_presence_of :first_name
+
+    normalize_attributes :first_name, :last_name
   end
 end

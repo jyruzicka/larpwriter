@@ -2,19 +2,10 @@ module IsPlayerOrNpcPlayer
   extend ActiveSupport::Concern
 
   included do
-    validates_presence_of :first_name, :larp_id, :email
+    validates_presence_of :email
     validates_format_of   :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
     attr_accessor :birth_date_as_string
-
-    has_attached_file :picture, styles: { medium: "124x160", thumbnail: "25x32" }
-    validates_attachment_content_type :picture,
-      content_type: /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/,
-      message:      'file type is not allowed (only jpeg/png/gif images)'
-    attr_accessor :remove_picture
-    before_save { |player_or_npc_player| player_or_npc_player.picture = nil if remove_picture }
-
-    normalize_attributes :first_name, :last_name
   end
 
   def age

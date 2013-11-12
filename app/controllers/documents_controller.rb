@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  include IsAsset
+  include IsAssetController
 
   def index
     @documents = @larp.documents.by_name

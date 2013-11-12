@@ -1,5 +1,5 @@
 class PcsController < ApplicationController
-  include IsAsset
+  include IsAssetController
 
   def index
     @pcs = @larp.pcs.by_name
@@ -44,6 +44,6 @@ class PcsController < ApplicationController
   end
 
   def pc_params
-    params[:pc].permit(:name, :description, :player_id)
+    params[:pc].permit(:name, :description, :player_id, :attached_picture, :remove_attached_picture, as_origin_relationships_attributes: [:target_id, :target_type, :target_description, :target_custom_name, :_destroy, :id, :attached_picture, :remove_attached_picture])
   end
 end

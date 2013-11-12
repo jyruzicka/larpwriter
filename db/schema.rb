@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111142458) do
+ActiveRecord::Schema.define(version: 20131112073111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20131111142458) do
   end
 
   create_table "npc_players", force: true do |t|
-    t.string   "first_name"
+    t.string   "first_name",                    null: false
     t.string   "last_name"
     t.integer  "larp_id"
     t.string   "email"
@@ -49,21 +49,26 @@ ActiveRecord::Schema.define(version: 20131111142458) do
     t.date     "birth_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.string   "attached_picture_file_name"
+    t.string   "attached_picture_content_type"
+    t.integer  "attached_picture_file_size"
+    t.datetime "attached_picture_updated_at"
+    t.string   "name",                          null: false
   end
 
   add_index "npc_players", ["larp_id"], name: "index_npc_players_on_larp_id", using: :btree
 
   create_table "npcs", force: true do |t|
-    t.string   "name"
+    t.string   "name",                          null: false
     t.text     "description"
     t.integer  "larp_id"
     t.integer  "npc_player_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "attached_picture_file_name"
+    t.string   "attached_picture_content_type"
+    t.integer  "attached_picture_file_size"
+    t.datetime "attached_picture_updated_at"
   end
 
   add_index "npcs", ["larp_id"], name: "index_npcs_on_larp_id", using: :btree
@@ -78,35 +83,30 @@ ActiveRecord::Schema.define(version: 20131111142458) do
     t.string   "phone_numbers"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name",          null: false
   end
 
   add_index "organizers", ["larp_id"], name: "index_organizers_on_larp_id", using: :btree
   add_index "organizers", ["user_id"], name: "index_organizers_on_user_id", using: :btree
 
   create_table "pcs", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "name",                          null: false
     t.text     "description"
     t.integer  "larp_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "player_id"
+    t.string   "attached_picture_file_name"
+    t.string   "attached_picture_content_type"
+    t.integer  "attached_picture_file_size"
+    t.datetime "attached_picture_updated_at"
   end
 
   add_index "pcs", ["larp_id"], name: "index_pcs_on_larp_id", using: :btree
   add_index "pcs", ["player_id"], name: "index_pcs_on_player_id", using: :btree
 
-  create_table "player_pcs", force: true do |t|
-    t.integer  "player_id"
-    t.integer  "pc_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "player_pcs", ["pc_id"], name: "index_player_pcs_on_pc_id", using: :btree
-  add_index "player_pcs", ["player_id"], name: "index_player_pcs_on_player_id", using: :btree
-
   create_table "players", force: true do |t|
-    t.string   "first_name"
+    t.string   "first_name",                    null: false
     t.string   "last_name"
     t.integer  "larp_id"
     t.string   "email"
@@ -116,10 +116,11 @@ ActiveRecord::Schema.define(version: 20131111142458) do
     t.date     "birth_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.string   "attached_picture_file_name"
+    t.string   "attached_picture_content_type"
+    t.integer  "attached_picture_file_size"
+    t.datetime "attached_picture_updated_at"
+    t.string   "name",                          null: false
   end
 
   add_index "players", ["larp_id"], name: "index_players_on_larp_id", using: :btree
@@ -140,6 +141,24 @@ ActiveRecord::Schema.define(version: 20131111142458) do
 
   add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
+
+  create_table "relationships", force: true do |t|
+    t.integer  "origin_id"
+    t.string   "origin_type"
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.text     "target_description"
+    t.string   "target_custom_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attached_picture_file_name"
+    t.string   "attached_picture_content_type"
+    t.integer  "attached_picture_file_size"
+    t.datetime "attached_picture_updated_at"
+  end
+
+  add_index "relationships", ["origin_id", "origin_type"], name: "index_relationships_on_origin_id_and_origin_type", using: :btree
+  add_index "relationships", ["target_id", "target_type"], name: "index_relationships_on_target_id_and_target_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

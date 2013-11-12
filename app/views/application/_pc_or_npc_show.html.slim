@@ -1,0 +1,37 @@
+= content_for :html_title, pc_or_npc.name
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", [@larp, pc_or_npc], method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", [:edit, @larp, pc_or_npc], class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    - if pc_or_npc.picture
+      = image_tag pc_or_npc.picture.url(:medium), class: "pull-right"
+    h3 Name
+    p= pc_or_npc.name
+
+    h3 #{pc_or_npc.is_a?(Pc) ? 'Player' : 'NPC Player'}
+    p
+      - if pc_or_npc.player_or_npc_player
+        = link_to pc_or_npc.player_or_npc_player_name, [@larp, pc_or_npc.player_or_npc_player]
+
+    h3 Description
+    = pc_or_npc.description.try :html_safe
+
+    h3 Relationships (#{pc_or_npc.as_origin_relationships.count})
+    - pc_or_npc.as_origin_relationships.each do |relationship|
+      .well
+        - if relationship.picture
+          = image_tag relationship.picture.url(:medium)
+
+        - unless relationship.reverse_relationship
+          p.text-warning.small-info.pull-right
+           span.glyphicon.glyphicon-warning-sign
+           |&nbsp;the reverse relationship does not exist
+
+        h4
+          = link_to relationship.target_name, [@larp, relationship.target]
+        .description= simple_format relationship.target_description
+        - if relationship.reverse_relationship
+          p= link_to "see the reverse relationship", "#"

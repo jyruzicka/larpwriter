@@ -1,9 +1,9 @@
 class Pc < ActiveRecord::Base
-  include IsPcOrNpc
+  include IsAsset, IsPcOrNpc, HasAttachedPicture
 
-  belongs_to :larp
   belongs_to :player
 
-  delegate :picture, to: :player, prefix: true, allow_nil: true
-  delegate :name,    to: :player, prefix: true, allow_nil: true
+  def player_or_npc_player
+    player
+  end
 end

@@ -2,9 +2,9 @@
   = f.input :first_name, autofocus: true
   = f.input :last_name
   = f.input :email
-  = f.input :picture
-  - if player_or_npc_player.picture.exists?
-    = f.check_box :remove_picture
+  = f.input :attached_picture, label: "Picture"
+  - if player_or_npc_player.attached_picture.exists?
+    = f.check_box :remove_attached_picture
     |&nbsp;Remove existing picture
   - if player_or_npc_player.is_a? Player
     = f.input :pc_or_npc_names, disabled: true, hint: "to add or remove a PC, do it from the corresponding PC edit page", label: "PCs"

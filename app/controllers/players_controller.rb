@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  include IsAsset
+  include IsAssetController
 
   def index
     @players = @larp.players.by_name
@@ -44,6 +44,6 @@ class PlayersController < ApplicationController
   end
 
   def player_params
-    params[:player].permit(:first_name, :last_name, :email, :notes, :phone_numbers, :postal_address, :birth_date_as_string, :picture, :remove_picture)
+    params[:player].permit(:first_name, :last_name, :email, :notes, :phone_numbers, :postal_address, :birth_date_as_string, :attached_picture, :remove_attached_picture)
   end
 end

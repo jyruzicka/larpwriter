@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require redactor-rails
 //= require bootstrap-datepicker/core
+//= require cocoon
+//= require jquery.autosize
 //= require_tree .

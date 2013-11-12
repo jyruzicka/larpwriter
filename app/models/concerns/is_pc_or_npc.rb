@@ -2,14 +2,20 @@ module IsPcOrNpc
   extend ActiveSupport::Concern
 
   included do
-    validates_presence_of :name
+    has_many :as_origin_relationships, class_name: "Relationship", dependent: :destroy, as: :origin
+    accepts_nested_attributes_for :as_origin_relationships, allow_destroy: true, reject_if: proc { |attributes| attributes['target_id'].blank? }
+    has_many :as_target_relationships, class_name: "Relationship", dependent: :destroy, as: :target
+
     validates_uniqueness_of :name, scope: :larp_id
 
-    scope :by_name, -> { order :name }
+    delegate :name, to: :player_or_npc_player, prefix: :player_or_npc_player, allow_nil: true
 
-    delegate :picture, to: :player_or_npc_player, prefix: true, allow_nil: true
-    delegate :name,    to: :player_or_npc_player, prefix: true, allow_nil: true
-
-    normalize_attributes :name
+    def picture
+      if attached_picture.exists?
+        attached_picture
+      elsif player_or_npc_player && player_or_npc_player.attached_picture.exists?
+        player_or_npc_player.attached_picture
+      end
+    end
   end
 end

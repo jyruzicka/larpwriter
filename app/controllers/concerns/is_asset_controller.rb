@@ -1,4 +1,4 @@
-module IsAsset
+module IsAssetController
   extend ActiveSupport::Concern
 
   included do
@@ -8,7 +8,6 @@ module IsAsset
     before_action :get_larp
     before_action :authorize_user!
     before_action :get_asset, only: [:show, :edit, :update, :destroy]
-
   end
 
   def get_larp

@@ -1,0 +1,15 @@
+// reuqired: false else we have this error/bug:
+// http://stackoverflow.com/questions/7168645/invalid-form-control-only-in-google-chrome
+.nested-fields.well
+  = link_to_remove_association "remove this relationship", f, class: "pull-right remove-association", data: {confirm: "Are you sure?"}
+
+  = f.input :target_type,  required: false, collection: ["Pc", "Npc"],       input_html: {data: {role: "target-type-selector"}}, selected: "#{f.object.target_type.presence || 'Pc'}"
+  = f.association :target, required: false, collection: @larp.pcs.by_name,  input_html: {data: {role: "target-selector", "target-type" => "Pc"}}
+  = f.association :target, required: false, collection: @larp.npcs.by_name, input_html: {data: {role: "target-selector", "target-type" => "Npc"}}
+
+  = f.input :target_description
+  = f.input :target_custom_name, hint: "Fill in this field only if you want to display a specific name instead of the target official name"
+  = f.input :attached_picture, label: "Target custom picture", hint: "Upload a file only if you want to display a specific picture instead of the target official picture"
+  - if f.object.attached_picture.exists?
+    = f.check_box :remove_attached_picture
+    |&nbsp;Remove existing picture

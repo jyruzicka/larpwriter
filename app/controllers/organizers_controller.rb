@@ -1,5 +1,5 @@
 class OrganizersController < ApplicationController
-  include IsAsset
+  include IsAssetController
 
   def index
     @organizers = @larp.organizers.by_name

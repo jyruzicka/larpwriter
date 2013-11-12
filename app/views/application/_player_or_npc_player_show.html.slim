@@ -6,8 +6,8 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    - if player_or_npc_player.picture.exists?
-      = image_tag player_or_npc_player.picture.url(:medium), class: "pull-right"
+    - if player_or_npc_player.attached_picture.exists?
+      = image_tag player_or_npc_player.attached_picture.url(:medium), class: "pull-right"
     dl.dl-horizontal
       dt First name
       dd= player_or_npc_player.first_name
@@ -15,7 +15,7 @@
       dd= player_or_npc_player.last_name
       dt Email
       dd= mail_to player_or_npc_player.email
-      dt Pc
+      dt #{player_or_npc_player.is_a?(Player) ? 'PC' : 'NPC'}
       dd
         - if player_or_npc_player.pcs_or_npcs.any?
           = links_to_assets player_or_npc_player.pcs_or_npcs

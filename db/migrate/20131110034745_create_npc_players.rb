@@ -1,7 +1,7 @@
 class CreateNpcPlayers < ActiveRecord::Migration
   def change
     create_table :npc_players do |t|
-      t.string :first_name
+      t.string :first_name, null: false
       t.string :last_name
       t.references :larp, index: true
       t.string :email

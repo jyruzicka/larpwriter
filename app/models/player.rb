@@ -1,12 +1,9 @@
 class Player < ActiveRecord::Base
-  include HasFirstNameAndLastName
-  include IsPlayerOrNpcPlayer
+  include IsAsset, HasFirstNameAndLastName, IsPlayerOrNpcPlayer, HasAttachedPicture
 
-  belongs_to :larp
   has_many :pcs, dependent: :nullify
 
   def pcs_or_npcs
     pcs
   end
-
 end

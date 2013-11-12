@@ -1,6 +1,1 @@
-= simple_form_for [@larp, @npc] do |f|
-  = f.input :name, autofocus: true
-  = f.input :description, input_html: { class: "redactor" }
-  = f.association :npc_player, collection: @larp.npc_players.by_name, label_method: :name_with_pc_or_npc_names
-
-  = f.button :submit, class: "btn btn-info"
+= render "application/pc_or_npc_form", pc_or_npc: @npc

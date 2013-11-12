@@ -16,6 +16,7 @@ gem 'slim-rails'
 gem 'simple_form'
 gem 'redactor-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'cocoon'
 
 # backend
 gem 'pg'
