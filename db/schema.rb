@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112073111) do
+ActiveRecord::Schema.define(version: 20131112235724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20131112073111) do
   end
 
   add_index "documents", ["larp_id"], name: "index_documents_on_larp_id", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "larp_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attached_picture_file_name"
+    t.string   "attached_picture_content_type"
+    t.integer  "attached_picture_file_size"
+    t.datetime "attached_picture_updated_at"
+  end
+
+  add_index "groups", ["larp_id"], name: "index_groups_on_larp_id", using: :btree
 
   create_table "larps", force: true do |t|
     t.string   "name",       null: false

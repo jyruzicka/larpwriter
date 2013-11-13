@@ -28,7 +28,7 @@ html
         = yield
       .col-sm-3
         .list-group.larp-sidebar
-          - %i(pcs npcs players npc_players documents organizers).each do |asset_type_plural|
+          - %i(groups pcs players npcs npc_players documents organizers).each do |asset_type_plural|
             = link_to [@larp, asset_type_plural], class: "list-group-item #{'active' if controller_name == asset_type_plural.to_s}" do
               span.badge.add-asset data-action-path="#{polymorphic_path [:new, @larp, asset_type_plural.to_s.chop]}" +
               span.badge= @larp.send(asset_type_plural).count

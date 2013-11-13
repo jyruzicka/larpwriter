@@ -1,0 +1,14 @@
+= content_for :html_title, @group.name
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", larp_group_path(@larp, @group), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", edit_larp_group_path(@larp, @group), class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    - if @group.attached_picture
+      = image_tag @group.attached_picture.url(:medium), class: "pull-right"
+    h3 Name
+    p= @group.name
+    h3 Description
+    = @group.description.try :html_safe

@@ -4,6 +4,7 @@ Larpwriter::Application.routes.draw do
   root to: "pages#home"
 
   resources :larps do
+    resources :groups
     resources :pcs
     resources :npcs
     resources :players

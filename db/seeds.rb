@@ -6,7 +6,7 @@ joe_larp = Larp.create! name: "Joe's larp"
 
 joe_larp.organizers.create! user: joe, first_name: "joe", email: "joe@example.com"
 
-%i(pcs npcs documents).each do |asset_type_plural|
+%i(groups pcs npcs documents).each do |asset_type_plural|
   5.times { |i| joe_larp.send(asset_type_plural).create! name: "#{asset_type_plural.to_s.chop} ##{i}"}
 end
 

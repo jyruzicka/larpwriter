@@ -1,0 +1,9 @@
+= simple_form_for [@larp, @group] do |f|
+  = f.input :name, autofocus: true
+  = f.input :attached_picture, label: "Picture"
+  - if @group.attached_picture.exists?
+    = f.check_box :remove_attached_picture
+    |&nbsp;Remove existing picture
+  = f.input :description, input_html: { class: "redactor" }
+
+  = f.button :submit, class: "btn btn-info"

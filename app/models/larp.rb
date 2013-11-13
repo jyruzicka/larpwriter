@@ -1,6 +1,7 @@
 class Larp < ActiveRecord::Base
   include HasName
 
+  has_many :groups,      dependent: :destroy
   has_many :pcs,         dependent: :destroy
   has_many :npcs,        dependent: :destroy
   has_many :players,     dependent: :destroy

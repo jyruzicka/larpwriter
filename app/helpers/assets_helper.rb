@@ -6,7 +6,7 @@ module AssetsHelper
 
   # hackish but useful!
   def current_asset
-    @current_asset ||= @organizer || @pc || @npc || @player || @npc_player || @document
+    @current_asset ||= @group || @pc || @npc || @player || @npc_player || @document || @organizer
   end
 
   def current_asset_model_name
@@ -15,6 +15,7 @@ module AssetsHelper
 
   def index_attribute_names asset_type
     case asset_type
+    when :group      then %i(attached_picture name)
     when :pc         then %i(picture name player_or_npc_player_name)
     when :npc        then %i(picture name player_or_npc_player_name)
     when :player     then %i(attached_picture first_name last_name email phone_numbers)
