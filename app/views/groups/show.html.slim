@@ -6,9 +6,19 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    - if @group.attached_picture
+    - if @group.attached_picture.exists?
       = image_tag @group.attached_picture.url(:medium), class: "pull-right"
+
     h3 Name
     p= @group.name
+
     h3 Description
     = @group.description.try :html_safe
+
+    h3 Members (#{@group.memberships.count})
+    - @group.memberships.each do |membership|
+      .well
+        - if membership.picture
+          = image_tag membership.picture.url(:medium)
+        h4= link_to membership.target_name, [@larp, membership.target]
+        .description= simple_format membership.target_description

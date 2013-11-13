@@ -30,8 +30,7 @@
            span.glyphicon.glyphicon-warning-sign
            |&nbsp;the reverse relationship does not exist
 
-        h4
-          = link_to relationship.target_name, [@larp, relationship.target]
+        h4= link_to relationship.target_name, [@larp, relationship.target]
         .description= simple_format relationship.target_description
         - if relationship.reverse_relationship
           p= link_to "see the reverse relationship", "#"

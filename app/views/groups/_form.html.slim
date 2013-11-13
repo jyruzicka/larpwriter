@@ -5,5 +5,10 @@
     = f.check_box :remove_attached_picture
     |&nbsp;Remove existing picture
   = f.input :description, input_html: { class: "redactor" }
+  h3 Members
+  .nested-fields-section
+    = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
+      = render "membership_fields", f: membership
+    p.links= link_to_add_association "add a new member", f, :memberships
 
   = f.button :submit, class: "btn btn-info"

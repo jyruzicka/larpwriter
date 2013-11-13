@@ -18,10 +18,6 @@ class Relationship < ActiveRecord::Base
     }).first
   end
 
-  def target_name
-    target_custom_name.presence || target.name
-  end
-
   def picture
     if attached_picture.exists?
       attached_picture
@@ -30,4 +26,7 @@ class Relationship < ActiveRecord::Base
     end
   end
 
+  def target_name
+    target_custom_name.presence || target.name
+  end
 end

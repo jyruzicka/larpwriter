@@ -15,9 +15,9 @@ module AssetsHelper
 
   def index_attribute_names asset_type
     case asset_type
-    when :group      then %i(attached_picture name)
-    when :pc         then %i(picture name player_or_npc_player_name)
-    when :npc        then %i(picture name player_or_npc_player_name)
+    when :group      then %i(attached_picture name memberships_count)
+    when :pc         then %i(picture name player_or_npc_player_name group_names)
+    when :npc        then %i(picture name player_or_npc_player_name group_names)
     when :player     then %i(attached_picture first_name last_name email phone_numbers)
     when :npc_player then %i(attached_picture first_name last_name email phone_numbers)
     when :document   then %i(name file)

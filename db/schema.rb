@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112235724) do
+ActiveRecord::Schema.define(version: 20131113154607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20131112235724) do
     t.string   "attached_picture_content_type"
     t.integer  "attached_picture_file_size"
     t.datetime "attached_picture_updated_at"
+    t.integer  "memberships_count",             default: 0, null: false
   end
 
   add_index "groups", ["larp_id"], name: "index_groups_on_larp_id", using: :btree
@@ -51,6 +52,23 @@ ActiveRecord::Schema.define(version: 20131112235724) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "group_id"
+    t.string   "target_custom_name"
+    t.text     "target_description"
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attached_picture_file_name"
+    t.string   "attached_picture_content_type"
+    t.integer  "attached_picture_file_size"
+    t.datetime "attached_picture_updated_at"
+  end
+
+  add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
+  add_index "memberships", ["target_id", "target_type"], name: "index_memberships_on_target_id_and_target_type", using: :btree
 
   create_table "npc_players", force: true do |t|
     t.string   "first_name",                    null: false
