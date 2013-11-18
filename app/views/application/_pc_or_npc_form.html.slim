@@ -11,20 +11,25 @@
     = f.check_box :remove_attached_picture
     |&nbsp;Remove existing picture
 
+  h3 Groups
   - if @larp.groups.any?
-    h3 Groups
     .nested-fields-section
       = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
         = render "membership_for_pc_or_npc_fields", f: membership
       p.links= link_to_add_association "include into a group", f, :memberships, partial: "membership_for_pc_or_npc_fields"
+  - else
+    p You'll be able to include the PC or NPC into a group once you'll have created at least one group.
 
   h3 Description
   = f.input :description, label: false, input_html: { class: "redactor" }
 
   h3 Relationships
-  .nested-fields-section
-    = f.simple_fields_for :as_origin_relationships, html: {novalidate: true} do |as_origin_relationship|
-      = render "application/as_origin_relationship_fields", f: as_origin_relationship
-    p.links= link_to_add_association "add a new relationship", f, :as_origin_relationships
+  - if @larp.pcs.scoped.any? or @larp.npcs.scoped.any?
+    .nested-fields-section
+      = f.simple_fields_for :as_origin_relationships, html: {novalidate: true} do |as_origin_relationship|
+        = render "application/as_origin_relationship_fields", f: as_origin_relationship
+      p.links= link_to_add_association "add a new relationship", f, :as_origin_relationships
+  - else
+    p You'll be able to add relationships once you'll have created other PCs or NPCs.
 
   = f.button :submit, class: "btn btn-info"

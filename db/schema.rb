@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(version: 20131113154607) do
     t.string   "origin_type"
     t.integer  "target_id"
     t.string   "target_type"
+    t.integer  "larp_id"
     t.text     "target_description"
     t.string   "target_custom_name"
     t.datetime "created_at"
@@ -189,6 +190,7 @@ ActiveRecord::Schema.define(version: 20131113154607) do
     t.datetime "attached_picture_updated_at"
   end
 
+  add_index "relationships", ["larp_id"], name: "index_relationships_on_larp_id", using: :btree
   add_index "relationships", ["origin_id", "origin_type"], name: "index_relationships_on_origin_id_and_origin_type", using: :btree
   add_index "relationships", ["target_id", "target_type"], name: "index_relationships_on_target_id_and_target_type", using: :btree
 

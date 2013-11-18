@@ -35,6 +35,7 @@
            |&nbsp;the reverse relationship does not exist
 
         h4= link_to relationship.target_name, [@larp, relationship.target]
-        .description= simple_format relationship.target_description
+        .description= display_description relationship.target_description
         - if relationship.reverse_relationship
-          p= link_to "see the reverse relationship", "#"
+          p.small-info= link_to "show/hide the reverse relationship", "#", class: "show-hide-reverse-relationship"
+          .description.hidden= display_description relationship.reverse_relationship.target_description

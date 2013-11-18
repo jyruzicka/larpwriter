@@ -34,4 +34,8 @@ $(function() {
       }
     });
   }
+
+  $(".show-hide-reverse-relationship").click(function() {
+    $(this).parent("p").next(".description").toggleClass("show hidden");
+  });
 });

@@ -1,0 +1,11 @@
+= content_for :html_title, "Missing relationships"
+
+table.table.table-striped.table-hover.table-bordered
+  thead
+    th From
+    th To
+  tbody
+    - @relationships_without_reverse.each do |relationship|
+      tr
+        td= link_to relationship.target.name, [@larp, relationship.target]
+        td= link_to relationship.origin.name, [@larp, relationship.origin]

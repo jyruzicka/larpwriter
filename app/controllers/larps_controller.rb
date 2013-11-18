@@ -22,6 +22,7 @@ class LarpsController < ApplicationController
 
   def show
     @larp = Larp.find params[:id]
+    @relationships_without_reverse_count = @larp.relationships.without_reverse.count
   end
 
   def edit
@@ -33,6 +34,10 @@ class LarpsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def missing_relationships
+    @relationships_without_reverse = @larp.relationships.without_reverse
   end
 
   private

@@ -10,7 +10,11 @@ html
       .col-sm-9
         ol.breadcrumb.breadcrumb-larp
           - if controller_name == 'larps'
-            li.active= @larp.name
+            - if action_name == 'show'
+              li.active= @larp.name
+            - else
+              li= link_to @larp.name, larp_path(@larp)
+              li= action_name
           - else
             li= link_to @larp.name, larp_path(@larp)
             - if action_name == 'index'

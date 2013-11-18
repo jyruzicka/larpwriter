@@ -5,10 +5,14 @@
     = f.check_box :remove_attached_picture
     |&nbsp;Remove existing picture
   = f.input :description, input_html: { class: "redactor" }
+
   h3 Members
-  .nested-fields-section
-    = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
-      = render "membership_fields", f: membership
-    p.links= link_to_add_association "add a new member", f, :memberships
+  - if @larp.pcs.any? or @larp.npcs.any?
+    .nested-fields-section
+      = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
+        = render "membership_fields", f: membership
+      p.links= link_to_add_association "add a new member", f, :memberships
+  - else
+    p You'll be able to add members once you'll have created PCs or NPCs.
 
   = f.button :submit, class: "btn btn-info"

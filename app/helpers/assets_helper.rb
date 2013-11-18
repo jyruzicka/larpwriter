@@ -13,6 +13,14 @@ module AssetsHelper
     controller_name.chop.camelize.constantize.model_name.human
   end
 
+  def display_description description
+    if description.present?
+      simple_format description
+    else
+      content_tag :span, "no description given", class: "info"
+    end
+  end
+
   def index_attribute_names asset_type
     case asset_type
     when :group      then %i(attached_picture name memberships_count)
