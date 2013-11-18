@@ -4,7 +4,8 @@
   li.asset-action= link_to "edit", edit_larp_path(@larp), class: "btn btn-info btn-xs"
 
 - unless @relationships_without_reverse_count.zero?
-  p
-    |There are&nbsp;
+  p.text-warning
+    span.glyphicon.glyphicon-warning-sign
+    |&nbsp;There are&nbsp;
     = link_to "#{@relationships_without_reverse_count} missing relationships", missing_relationships_larp_path(@larp)
     |.
