@@ -24,6 +24,7 @@ gem 'devise'
 gem 'quicklog'
 gem 'attribute_normalizer'
 gem 'paperclip'
+gem 'marco-polo'
 
 group :development, :test do
   gem 'dotenv-rails'
