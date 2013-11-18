@@ -1,14 +1,25 @@
 = simple_form_for [@larp, pc_or_npc] do |f|
   = f.input :name, autofocus: true
-  = f.input :description, input_html: { class: "redactor" }
+
   - if pc_or_npc.is_a? Pc
     = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
   - else
     = f.association :npc_player, collection: @larp.npc_players.by_name, label_method: :name_with_pc_or_npc_names
+
   = f.input :attached_picture, label: "Picture"
   - if pc_or_npc.attached_picture.exists?
     = f.check_box :remove_attached_picture
     |&nbsp;Remove existing picture
+
+  - if @larp.groups.any?
+    h3 Groups
+    .nested-fields-section
+      = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
+        = render "membership_for_pc_or_npc_fields", f: membership
+      p.links= link_to_add_association "include into a group", f, :memberships, partial: "membership_for_pc_or_npc_fields"
+
+  h3 Description
+  = f.input :description, label: false, input_html: { class: "redactor" }
 
   h3 Relationships
   .nested-fields-section

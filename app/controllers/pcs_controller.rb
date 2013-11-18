@@ -44,6 +44,6 @@ class PcsController < ApplicationController
   end
 
   def pc_params
-    params[:pc].permit(:name, :description, :player_id, :attached_picture, :remove_attached_picture, as_origin_relationships_attributes: [:target_id, :target_type, :target_description, :target_custom_name, :_destroy, :id, :attached_picture, :remove_attached_picture])
+    params[:pc].permit(:name, :description, :player_id, :attached_picture, :remove_attached_picture, as_origin_relationships_attributes: [:target_id, :target_type, :target_description, :target_custom_name, :_destroy, :id, :attached_picture, :remove_attached_picture], memberships_attributes: [:group_id, :target_description, :_destroy, :id, :target_custom_name, :attached_picture, :remove_attached_picture])
   end
 end

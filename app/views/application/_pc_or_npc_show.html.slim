@@ -8,6 +8,7 @@
   .panel-body
     - if pc_or_npc.picture
       = image_tag pc_or_npc.picture.url(:medium), class: "pull-right"
+
     h3 Name
     p= pc_or_npc.name
 
@@ -15,6 +16,9 @@
     p
       - if pc_or_npc.player_or_npc_player
         = link_to pc_or_npc.player_or_npc_player_name, [@larp, pc_or_npc.player_or_npc_player]
+
+    h3 Groups
+    = links_to_assets pc_or_npc.groups.by_name
 
     h3 Description
     = pc_or_npc.description.try :html_safe

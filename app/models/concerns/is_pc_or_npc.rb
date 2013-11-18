@@ -3,6 +3,7 @@ module IsPcOrNpc
 
   included do
     has_many :memberships, as: :target
+    accepts_nested_attributes_for :memberships, allow_destroy: true, reject_if: proc { |attributes| attributes['group_id'].blank? }
     has_many :groups, through: :memberships
 
     has_many :as_origin_relationships, class_name: "Relationship", dependent: :destroy, as: :origin

@@ -1,0 +1,13 @@
+// required: false else we have this error/bug:
+// http://stackoverflow.com/questions/7168645/invalid-form-control-only-in-google-chrome
+.nested-fields.well
+  = link_to_remove_association "remove this group", f, class: "pull-right remove-association", data: {confirm: "Are you sure?"}
+
+  = f.association :group, required: false, collection: @larp.groups.by_name
+
+  = f.input :target_description, label: "Description in group"
+  = f.input :target_custom_name, lable: "Custom name", hint: "Fill in this field only if you want to display a specific name instead of the pc or npc official name"
+  = f.input :attached_picture, label: "Custom picture", hint: "Upload a file only if you want to display a specific picture instead of the pc or npc official picture"
+  - if f.object.attached_picture.exists?
+    = f.check_box :remove_attached_picture
+    |&nbsp;Remove existing picture
