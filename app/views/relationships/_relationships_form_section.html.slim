@@ -1,0 +1,8 @@
+h3 Relationships
+- if @larp.pcs.scoped.any? or @larp.npcs.scoped.any? or @larp.groups.scoped.any?
+  .nested-fields-section
+    = f.simple_fields_for :as_origin_relationships, html: {novalidate: true} do |as_origin_relationship|
+      = render "application/as_origin_relationship_fields", f: as_origin_relationship
+    p.links= link_to_add_association "add a new relationship", f, :as_origin_relationships
+- else
+  p You'll be able to add relationships once you'll have created other PCs, NPCs or groups.

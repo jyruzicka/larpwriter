@@ -35,7 +35,13 @@ $(function() {
     });
   }
 
-  $(".show-hide-reverse-relationship").click(function() {
+  $(".show-hide-reverse-relationship").click(function(event) {
+    event.preventDefault();
     $(this).parent("p").next(".description").toggleClass("show hidden");
+  });
+
+  $("body").on("click", ".show-hide-options", function(event) {
+    event.preventDefault();
+    $(this).parent("p").next(".options").toggleClass("show hidden");
   });
 });

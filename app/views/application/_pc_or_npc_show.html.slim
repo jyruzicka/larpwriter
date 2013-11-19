@@ -6,7 +6,7 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    - if pc_or_npc.picture
+    - if pc_or_npc.picture.exists?
       = image_tag pc_or_npc.picture.url(:medium), class: "pull-right"
 
     h3 Name
@@ -23,25 +23,4 @@
     h3 Description
     = pc_or_npc.description.try :html_safe
 
-    h3 Relationships (#{pc_or_npc.as_origin_relationships.count})
-    - if (as_target_relationships_without_reverse = pc_or_npc.as_target_relationships.without_reverse).any?
-      p.text-warning.small-info
-        span.glyphicon.glyphicon-warning-sign
-        |&nbsp;
-        = links_to_assets as_target_relationships_without_reverse.map(&:origin)
-        |&nbsp; have a relationship towards #{pc_or_npc.name} but #{pc_or_npc.name} has no relationships towards them
-    - pc_or_npc.as_origin_relationships.each do |relationship|
-      .well
-        - if relationship.picture
-          = image_tag relationship.picture.url(:medium)
-
-        - unless relationship.reverse_relationship
-          p.text-warning.small-info.pull-right
-           span.glyphicon.glyphicon-warning-sign
-           |&nbsp;the reverse relationship does not exist
-
-        h4= link_to relationship.target_name, [@larp, relationship.target]
-        .description= display_description relationship.target_description
-        - if relationship.reverse_relationship
-          p.small-info= link_to "show/hide the reverse relationship", "#", class: "show-hide-reverse-relationship"
-          .description.hidden= display_description relationship.reverse_relationship.target_description
+    = render "relationships/relationships_show_section", asset: pc_or_npc

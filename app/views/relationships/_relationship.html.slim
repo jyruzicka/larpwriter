@@ -1,0 +1,13 @@
+.well
+  - if relationship.picture.exists?
+    = image_tag relationship.picture.url(:medium), class: "pull-right"
+
+  h4= link_to relationship.target_name, [@larp, relationship.target]
+  .description= display_description relationship.target_description
+  - if relationship.reverse_relationship
+    p.small-info= link_to "show/hide the reverse relationship", "#", class: "show-hide-reverse-relationship"
+    .description.hidden= display_description relationship.reverse_relationship.target_description
+  - else
+    p.text-warning.small-info
+     span.glyphicon.glyphicon-warning-sign
+     |&nbsp;the reverse relationship does not exist

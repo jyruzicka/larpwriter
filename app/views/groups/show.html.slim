@@ -22,3 +22,5 @@
           = image_tag membership.picture.url(:medium)
         h4= link_to membership.target_name, [@larp, membership.target]
         .description= simple_format membership.target_description
+
+    = render "relationships/relationships_show_section", asset: @group
