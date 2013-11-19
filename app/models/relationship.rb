@@ -11,6 +11,11 @@ class Relationship < ActiveRecord::Base
   #validates_presence_of :origin_id, :origin_type
   validates_presence_of :target_id, :target_type
 
+  # returns relationships for which the reverse relationship (target -> origin)
+  # does not exist
+  # for instance if we have the relationships (1,2), (2,1), (1,3), (1,4)
+  # then it would return the relationships (1,3), (1,4)
+  # because the relationships (3,1), (4,1) do not exist
   def self.without_reverse
     joins(<<-JOIN
             LEFT JOIN relationships r2
