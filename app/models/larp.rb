@@ -10,4 +10,5 @@ class Larp < ActiveRecord::Base
   has_many :documents,   dependent: :destroy
 
   has_many :relationships
+  has_many :memberships
 end

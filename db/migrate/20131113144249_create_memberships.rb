@@ -5,6 +5,8 @@ class CreateMemberships < ActiveRecord::Migration
       t.string :target_custom_name
       t.text :target_description
       t.references :target, index: true, polymorphic: true
+      t.references :larp, index: true
+      t.integer :rank
 
       t.timestamps
     end

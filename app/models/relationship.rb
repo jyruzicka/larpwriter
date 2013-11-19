@@ -1,7 +1,6 @@
 class Relationship < ActiveRecord::Base
-  include HasAttachedPicture
+  include HasAttachedPicture, IsSortable
 
-  include RankedModel
   ranks :rank, with_same: [:origin_id, :origin_type]
 
   belongs_to :origin, polymorphic: true
@@ -14,10 +13,9 @@ class Relationship < ActiveRecord::Base
   #validates_presence_of :origin_id, :origin_type
   validates_presence_of :target_id, :target_type
 
-  # returns relationships for which the reverse relationship (target -> origin)
-  # does not exist
+  # returns relationships whose the reverse relationship (target -> origin) does not exist
   # for instance if we have the relationships (1,2), (2,1), (1,3), (1,4)
-  # then it would return the relationships (1,3), (1,4)
+  # without_reverse it would return the relationships (1,3), (1,4)
   # because the relationships (3,1), (4,1) do not exist
   def self.without_reverse
     joins(<<-JOIN
@@ -50,13 +48,6 @@ class Relationship < ActiveRecord::Base
 
   def target_name
     target_custom_name.presence || target.name
-  end
-
-  def update_position! position
-    self.class.record_timestamps = false
-    update_attributes! rank_position: position
-  ensure
-    self.class.record_timestamps = true
   end
 
   private

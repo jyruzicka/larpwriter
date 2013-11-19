@@ -9,7 +9,7 @@
   h3 Members
   - if @larp.pcs.any? or @larp.npcs.any?
     .nested-fields-section
-      = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
+      = f.simple_fields_for :memberships, @group.memberships.rank(:rank), html: {novalidate: true} do |membership|
         = render "membership_fields", f: membership
       p.links= link_to_add_association "add a new member", f, :memberships
   - else

@@ -15,5 +15,8 @@ Larpwriter::Application.routes.draw do
       get  :missing,         on: :collection
       post :change_position, on: :member
     end
+    resources :memberships, only: [] do
+      post :change_position, on: :member
+    end
   end
 end

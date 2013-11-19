@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20131113154607) do
     t.text     "target_description"
     t.integer  "target_id"
     t.string   "target_type"
+    t.integer  "larp_id"
+    t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "attached_picture_file_name"
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 20131113154607) do
   end
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
+  add_index "memberships", ["larp_id"], name: "index_memberships_on_larp_id", using: :btree
   add_index "memberships", ["target_id", "target_type"], name: "index_memberships_on_target_id_and_target_type", using: :btree
 
   create_table "npc_players", force: true do |t|

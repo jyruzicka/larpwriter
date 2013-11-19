@@ -16,11 +16,12 @@
     = @group.description.try :html_safe
 
     h3 Members (#{@group.memberships.count})
-    - @group.memberships.each do |membership|
-      .well
-        - if membership.picture
-          = image_tag membership.picture.url(:medium)
-        h4= link_to membership.target_name, [@larp, membership.target]
-        .description= simple_format membership.target_description
+    ul.sortable-list
+      - @group.memberships.rank(:rank).each do |membership|
+        li.well{draggable="true" data-change-position-path="#{change_position_larp_membership_path @larp, membership}"}
+          - if membership.picture.exists?
+            = image_tag membership.picture.url(:medium), class: "pull-right"
+          h4= link_to membership.target_name, [@larp, membership.target]
+          .description= simple_format membership.target_description
 
     = render "relationships/relationships_show_section", asset: @group
