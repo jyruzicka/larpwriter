@@ -11,7 +11,9 @@ Larpwriter::Application.routes.draw do
     resources :npc_players
     resources :organizers
     resources :documents
-
-    get :missing_relationships, on: :member
+    resources :relationships, only: [] do
+      get  :missing,         on: :collection
+      post :change_position, on: :member
+    end
   end
 end

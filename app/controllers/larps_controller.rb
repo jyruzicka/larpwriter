@@ -36,10 +36,6 @@ class LarpsController < ApplicationController
     end
   end
 
-  def missing_relationships
-    @relationships_without_reverse = @larp.relationships.without_reverse
-  end
-
   private
 
   def get_larp

@@ -15,6 +15,9 @@ html
             - else
               li= link_to @larp.name, larp_path(@larp)
               li= action_name
+          - elsif controller_name == "relationships"
+            li= link_to @larp.name, larp_path(@larp)
+            li Missing relationships
           - else
             li= link_to @larp.name, larp_path(@larp)
             - if action_name == 'index'

@@ -6,6 +6,7 @@ class CreateRelationships < ActiveRecord::Migration
       t.references :larp, index: true
       t.text :target_description
       t.string :target_custom_name
+      t.integer :rank
 
       t.timestamps
     end

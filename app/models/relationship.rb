@@ -1,6 +1,9 @@
 class Relationship < ActiveRecord::Base
   include HasAttachedPicture
 
+  include RankedModel
+  ranks :rank, with_same: [:origin_id, :origin_type]
+
   belongs_to :origin, polymorphic: true
   belongs_to :target, polymorphic: true
 
@@ -28,6 +31,14 @@ class Relationship < ActiveRecord::Base
     .where("r2.origin_id IS NULL")
   end
 
+  def picture
+    if attached_picture.exists?
+      attached_picture
+    else
+      target.picture
+    end
+  end
+
   def reverse_relationship
     Relationship.where({
       origin_id:   target_id,
@@ -37,16 +48,15 @@ class Relationship < ActiveRecord::Base
     }).first
   end
 
-  def picture
-    if attached_picture.exists?
-      attached_picture
-    else
-      target.picture
-    end
-  end
-
   def target_name
     target_custom_name.presence || target.name
+  end
+
+  def update_position! position
+    self.class.record_timestamps = false
+    update_attributes! rank_position: position
+  ensure
+    self.class.record_timestamps = true
   end
 
   private

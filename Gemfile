@@ -11,6 +11,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # frontend
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'simple_form'
@@ -25,6 +26,7 @@ gem 'quicklog'
 gem 'attribute_normalizer'
 gem 'paperclip'
 gem 'marco-polo'
+gem 'ranked-model'
 
 group :development, :test do
   gem 'dotenv-rails'

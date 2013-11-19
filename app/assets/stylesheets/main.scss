@@ -8,3 +8,7 @@
   font-style: italic;
   text-color: grey;
 }
+
+*[draggable=true] {
+  cursor: move;
+}

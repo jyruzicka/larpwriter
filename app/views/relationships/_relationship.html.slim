@@ -1,4 +1,4 @@
-.well
+li.well{draggable="true" data-change-position-path="#{change_position_larp_relationship_path @larp, relationship}"}
   - if relationship.picture.exists?
     = image_tag relationship.picture.url(:medium), class: "pull-right"
 

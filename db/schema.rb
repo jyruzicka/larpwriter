@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 20131113154607) do
     t.integer  "larp_id"
     t.text     "target_description"
     t.string   "target_custom_name"
+    t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "attached_picture_file_name"

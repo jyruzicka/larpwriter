@@ -23,6 +23,6 @@
   h3 Description
   = f.input :description, label: false, input_html: { class: "redactor" }
 
-  = render "relationships/relationships_form_section", f: f
+  = render "relationships/relationships_form_section", f: f, asset: pc_or_npc
 
   = f.button :submit, class: "btn btn-info"
