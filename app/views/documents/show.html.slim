@@ -6,16 +6,21 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    dl.dl-horizontal
-      dt Name
-      dd= @document.name
-      dt Is included in all PCs?
-      dd= @document.is_included_in_all_pcs
-      dt Is included in all NPCs?
-      dd= @document.is_included_in_all_npcs
-      dt File
-      dd
-        - if @document.file.exists?
-          = link_to @document.file_file_name, @document.file.url
-      dt Content
-      dd= @document.content
+    h3 Name
+    = @document.name
+
+    h3 Tags
+    = display_tags @document.tags
+
+    h3 Is included in all PCs?
+    = @document.is_included_in_all_pcs
+
+    h3 Is included in all NPCs?
+    = @document.is_included_in_all_npcs
+
+    h3 File
+    - if @document.file.exists?
+      p= link_to @document.file_file_name, @document.file.url
+
+    h3 Content
+    = @document.content

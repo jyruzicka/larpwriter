@@ -1,5 +1,8 @@
 = simple_form_for [@larp, @group] do |f|
   = f.input :name, autofocus: true
+
+  = tags_input f
+
   = f.input :attached_picture, label: "Picture"
   - if @group.attached_picture.exists?
     = f.check_box :remove_attached_picture

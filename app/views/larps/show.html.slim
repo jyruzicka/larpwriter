@@ -9,3 +9,5 @@
     |&nbsp;There are&nbsp;
     = link_to "#{@relationships_without_reverse_count} missing relationships", missing_larp_relationships_path(@larp)
     |.
+
+= display_tags @larp.tags, with_count: true

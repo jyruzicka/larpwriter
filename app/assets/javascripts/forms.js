@@ -44,4 +44,11 @@ $(function() {
     event.preventDefault();
     $(this).parent("p").next(".options").toggleClass("show hidden");
   });
+
+  $("#see-tags").popover({
+    placement: "bottom",
+    html: true,
+  });
+
+  $(".colorpicker-input").colorpicker();
 });

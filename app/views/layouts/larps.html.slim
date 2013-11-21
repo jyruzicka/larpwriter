@@ -35,10 +35,10 @@ html
         = yield
       .col-sm-3
         .list-group.larp-sidebar
-          - %i(groups pcs players npcs npc_players documents organizers).each do |asset_type_plural|
-            = link_to [@larp, asset_type_plural], class: "list-group-item #{'active' if controller_name == asset_type_plural.to_s}" do
-              span.badge.add-asset data-action-path="#{polymorphic_path [:new, @larp, asset_type_plural.to_s.chop]}" +
-              span.badge= @larp.send(asset_type_plural).count
-              = asset_type_plural.to_s.humanize
+          - Larp::PLURAL_ASSET_TYPES.each do |plural_asset_type|
+            = link_to [@larp, plural_asset_type], class: "list-group-item #{'active' if controller_name == plural_asset_type.to_s}" do
+              span.badge.add-asset data-action-path="#{polymorphic_path [:new, @larp, plural_asset_type.to_s.chop]}" +
+              span.badge= @larp.send(plural_asset_type).count
+              = plural_asset_type.to_s.humanize
 
     = render "layouts/bottom"

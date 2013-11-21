@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-  include IsAsset, HasFirstNameAndLastName, IsPlayerOrNpcPlayer, HasAttachedPicture
+  include IsAsset, HasFirstNameAndLastName, IsPlayerOrNpcPlayer, HasAttachedPicture, IsTaggable
 
   has_many :pcs, dependent: :nullify
 

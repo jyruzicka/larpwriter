@@ -28,5 +28,8 @@ module Larpwriter
     end
 
     config.action_controller.action_on_unpermitted_parameters = :raise
+
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    config.assets.paths << "#{Rails}/vendor/assets/images"
   end
 end

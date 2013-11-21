@@ -1,5 +1,5 @@
 class Organizer < ActiveRecord::Base
-  include IsAsset, HasFirstNameAndLastName
+  include IsAsset, HasFirstNameAndLastName, IsTaggable
 
   belongs_to :user
 

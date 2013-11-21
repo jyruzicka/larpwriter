@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  include IsAsset, HasAttachedPicture, HasRelationships
+  include IsAsset, HasAttachedPicture, HasRelationships, IsTaggable
 
   has_many :memberships, dependent: :destroy
   accepts_nested_attributes_for :memberships, allow_destroy: true, reject_if: proc { |attributes| attributes['target_id'].blank? }

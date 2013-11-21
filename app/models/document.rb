@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  include IsAsset
+  include IsAsset, IsTaggable
 
   has_attached_file :file
   validates_attachment_size :file, less_than: 20.megabytes, message: "must be less than 20 MB"

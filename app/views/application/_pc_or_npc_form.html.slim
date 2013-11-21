@@ -1,6 +1,8 @@
 = simple_form_for [@larp, pc_or_npc] do |f|
   = f.input :name, autofocus: true
 
+  = tags_input f
+
   - if pc_or_npc.is_a? Pc
     = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
   - else

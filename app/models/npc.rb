@@ -1,5 +1,5 @@
 class Npc < ActiveRecord::Base
-  include IsAsset, IsPcOrNpc, HasAttachedPicture
+  include IsAsset, IsPcOrNpc, HasAttachedPicture, IsTaggable
 
   belongs_to :npc_player
 

@@ -12,6 +12,9 @@
     h3 Name
     p= pc_or_npc.name
 
+    h3 Tags
+    = display_tags pc_or_npc.tags
+
     h3 #{pc_or_npc.is_a?(Pc) ? 'Player' : 'NPC Player'}
     p
       - if pc_or_npc.player_or_npc_player

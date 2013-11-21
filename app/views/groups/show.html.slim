@@ -12,6 +12,9 @@
     h3 Name
     p= @group.name
 
+    h3 Tags
+    = display_tags @group.tags
+
     h3 Description
     = @group.description.try :html_safe
 

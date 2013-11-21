@@ -1,0 +1,8 @@
+= simple_form_for [@larp, @tag] do |f|
+  = f.input :name, autofocus: true
+
+  = f.input :color, input_html: { class: "colorpicker-input" }
+
+  = f.input :description
+
+  = f.button :submit, class: "btn btn-info"

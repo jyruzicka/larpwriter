@@ -79,4 +79,6 @@ Larpwriter::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: ENV['HOST'] }
+
+  config.assets.precompile += %w( *.svg *.eot *.woff *.ttf *.png )
 end

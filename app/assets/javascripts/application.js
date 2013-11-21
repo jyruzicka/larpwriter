@@ -17,4 +17,6 @@
 //= require bootstrap-datepicker/core
 //= require cocoon
 //= require jquery.autosize
+//= require bootstrap-tagsinput
+//= require bootstrap-colorpicker
 //= require_tree .

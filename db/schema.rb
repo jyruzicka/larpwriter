@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113154607) do
+ActiveRecord::Schema.define(version: 20131120022800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,6 +197,29 @@ ActiveRecord::Schema.define(version: 20131113154607) do
   add_index "relationships", ["larp_id"], name: "index_relationships_on_larp_id", using: :btree
   add_index "relationships", ["origin_id", "origin_type"], name: "index_relationships_on_origin_id_and_origin_type", using: :btree
   add_index "relationships", ["target_id", "target_type"], name: "index_relationships_on_target_id_and_target_type", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name",                       null: false
+    t.text     "description"
+    t.integer  "larp_id"
+    t.string   "color"
+    t.integer  "taggings_count", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["larp_id"], name: "index_tags_on_larp_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

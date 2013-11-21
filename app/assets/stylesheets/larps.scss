@@ -40,3 +40,19 @@
 .small-info {
   font-size: .7em;
 }
+
+.tag {
+  margin-right: 10px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.bootstrap-tagsinput {
+  display: block;
+}
+
+.badge-tag-count {
+  font-size: 0.8em;
+  padding: 1px 3px;
+}

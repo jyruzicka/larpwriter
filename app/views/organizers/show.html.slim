@@ -6,12 +6,17 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    dl.dl-horizontal
-      dt First name
-      dd= @organizer.first_name
-      dt Last name
-      dd= @organizer.last_name
-      dt Email
-      dd= mail_to @organizer.email
-      dt Phone numbers
-      dd= @organizer.phone_numbers
+      h3 First name
+      = @organizer.first_name
+
+      h3 Last name
+      = @organizer.last_name
+
+      h3 Tags
+      = display_tags @organizer.tags
+
+      h3 Email
+      = mail_to @organizer.email
+
+      h3 Phone numbers
+      = @organizer.phone_numbers

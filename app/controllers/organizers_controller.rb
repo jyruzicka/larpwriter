@@ -48,6 +48,6 @@ class OrganizersController < ApplicationController
   end
 
   def organizer_params
-    params[:organizer].permit(:first_name, :last_name, :email, :phone_numbers)
+    params[:organizer].permit(:first_name, :last_name, :tags_string, :email, :phone_numbers)
   end
 end

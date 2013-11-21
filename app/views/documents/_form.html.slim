@@ -1,5 +1,6 @@
 = simple_form_for [@larp, @document] do |f|
   = f.input :name, autofocus: true
+  = tags_input f
   = f.input :is_included_in_all_pcs
   = f.input :is_included_in_all_npcs
   = f.input :file

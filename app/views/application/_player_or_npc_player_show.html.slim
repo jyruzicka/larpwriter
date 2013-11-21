@@ -8,24 +8,32 @@
   .panel-body
     - if player_or_npc_player.attached_picture.exists?
       = image_tag player_or_npc_player.attached_picture.url(:medium), class: "pull-right"
-    dl.dl-horizontal
-      dt First name
-      dd= player_or_npc_player.first_name
-      dt Last name
-      dd= player_or_npc_player.last_name
-      dt Email
-      dd= mail_to player_or_npc_player.email
-      dt #{player_or_npc_player.is_a?(Player) ? 'PC' : 'NPC'}
-      dd
-        - if player_or_npc_player.pcs_or_npcs.any?
-          = links_to_assets player_or_npc_player.pcs_or_npcs
-      dt Phone numbers
-      dd= player_or_npc_player.phone_numbers
-      dt Postal address
-      dd= player_or_npc_player.postal_address
-      dt Age
-      dd
-        - if player_or_npc_player.birth_date
-          #{player_or_npc_player.age} years (#{l player_or_npc_player.birth_date, format: :long})
-      dt Notes
-      dd= player_or_npc_player.notes
+
+    h3 First name
+    = player_or_npc_player.first_name
+
+    h3 Last name
+    = player_or_npc_player.last_name
+
+    h3 Tags
+    = display_tags player_or_npc_player.tags
+
+    h3 Email
+    = mail_to player_or_npc_player.email
+
+    h3 #{player_or_npc_player.is_a?(Player) ? 'PC' : 'NPC'}
+    - if player_or_npc_player.pcs_or_npcs.any?
+      = links_to_assets player_or_npc_player.pcs_or_npcs
+
+    h3 Phone numbers
+    = player_or_npc_player.phone_numbers
+
+    h3 Postal address
+    = player_or_npc_player.postal_address
+
+    h3 Age
+    - if player_or_npc_player.birth_date
+      #{player_or_npc_player.age} years (#{l player_or_npc_player.birth_date, format: :long})
+
+    h3 Notes
+    = player_or_npc_player.notes

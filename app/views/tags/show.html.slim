@@ -1,0 +1,24 @@
+= content_for :html_title, @tag.name
+
+= content_for :asset_actions
+  li.asset-action= link_to "remove", larp_tag_path(@larp, @tag), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-xs"
+  li.asset-action= link_to "edit", edit_larp_tag_path(@larp, @tag), class: "btn btn-info btn-xs"
+
+.panel.panel-default.panel-asset
+  .panel-body
+    h3 Name
+    = tag_span @tag
+
+    h3 Description
+    = @tag.description
+
+    h3= pluralize @tag.taggings.count, "tagged item"
+    - if @tag.taggings.any?
+      table.table.table-striped.table-hover.table-bordered
+        tbody
+          - Larp::PLURAL_ASSET_TYPES.each do |plural_asset_type|
+            - tag_count = @tag.send(plural_asset_type).count
+            - unless tag_count.zero?
+              tr
+                td= pluralize tag_count, plural_asset_type.to_s.chop
+                td= links_to_assets @tag.send(plural_asset_type).by_name

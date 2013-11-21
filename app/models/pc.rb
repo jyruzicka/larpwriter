@@ -1,5 +1,5 @@
 class Pc < ActiveRecord::Base
-  include IsAsset, IsPcOrNpc, HasAttachedPicture
+  include IsAsset, IsPcOrNpc, HasAttachedPicture, IsTaggable
 
   belongs_to :player
 

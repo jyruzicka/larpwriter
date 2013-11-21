@@ -6,7 +6,7 @@ module AssetsHelper
 
   # hackish but useful!
   def current_asset
-    @current_asset ||= @group || @pc || @npc || @player || @npc_player || @document || @organizer
+    @current_asset ||= @tag || @group || @pc || @npc || @player || @npc_player || @document || @organizer
   end
 
   def current_asset_model_name
