@@ -3,10 +3,19 @@
   = tags_input f
   = f.input :is_included_in_all_pcs
   = f.input :is_included_in_all_npcs
+
   = f.input :file
   - if @document.file.exists?
     = f.check_box :remove_file
     |&nbsp;Remove existing file #{@document.file_file_name}
-  = f.input :content, input_html: { class: "redactor" }
+
+  h3 Included in
+  .nested-fields-section
+    = f.simple_fields_for :asset_documents, @document.asset_documents, html: {novalidate: true} do |asset_document|
+      = render "document_asset_document_fields", f: asset_document
+    p.links= link_to_add_association "include in another group, PC or NPC", f, :asset_documents, partial: "document_asset_document_fields"
+
+  h3 Content
+  = f.input :content, label: false, input_html: { class: "redactor" }
 
   = f.button :submit, class: "btn btn-info"

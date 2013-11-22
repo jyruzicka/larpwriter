@@ -1,0 +1,6 @@
+- if @larp.documents.any?
+  h3 Included documents
+  .nested-fields-section
+    = f.simple_fields_for :asset_documents, asset.asset_documents, html: {novalidate: true} do |asset_document|
+      = render "asset_document_fields", f: asset_document
+    p.links= link_to_add_association "include another document", f, :asset_documents

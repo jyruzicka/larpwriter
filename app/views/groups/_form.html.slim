@@ -7,7 +7,10 @@
   - if @group.attached_picture.exists?
     = f.check_box :remove_attached_picture
     |&nbsp;Remove existing picture
+
   = f.input :description, input_html: { class: "redactor" }
+
+  = render "application/included_documents_form_section", asset: @group, f: f
 
   h3 Members
   - if @larp.pcs.any? or @larp.npcs.any?

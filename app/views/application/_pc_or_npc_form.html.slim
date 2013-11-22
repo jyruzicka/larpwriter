@@ -13,6 +13,8 @@
     = f.check_box :remove_attached_picture
     |&nbsp;Remove existing picture
 
+  = render "application/included_documents_form_section", asset: pc_or_npc, f: f
+
   h3 Groups
   - if @larp.groups.any?
     .nested-fields-section

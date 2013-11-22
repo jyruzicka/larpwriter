@@ -12,8 +12,9 @@
     h3 Name
     p= pc_or_npc.name
 
-    h3 Tags
-    = display_tags pc_or_npc.tags
+    = asset_show_tags_section pc_or_npc
+
+    = asset_show_included_documents_section pc_or_npc
 
     h3 #{pc_or_npc.is_a?(Pc) ? 'Player' : 'NPC Player'}
     p

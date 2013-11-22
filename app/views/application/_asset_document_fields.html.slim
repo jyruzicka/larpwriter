@@ -1,0 +1,5 @@
+// required: false else we have this error/bug:
+// http://stackoverflow.com/questions/7168645/invalid-form-control-only-in-google-chrome
+.nested-fields
+  = link_to_remove_association "no longer include this document", f, class: "pull-right remove-association"
+  = f.association :document, label: false, required: false, collection: @larp.documents.by_name

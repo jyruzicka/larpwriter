@@ -44,6 +44,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params[:document].permit(:name, :tags_string, :content, :is_included_in_all_pcs, :is_included_in_all_npcs, :file, :remove_file)
+    params[:document].permit(:name, :tags_string, :content, :is_included_in_all_pcs, :is_included_in_all_npcs, :file, :remove_file, asset_documents_attributes: [:documentable_id, :documentable_type, :_destroy, :id])
   end
 end

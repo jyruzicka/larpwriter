@@ -1,5 +1,9 @@
 module TagsHelper
 
+  def asset_show_tags_section asset
+    content_tag(:h3, "Tags") + display_tags(asset.tags)
+  end
+
   def display_tags tags, with_line_breaks: false, with_count: false
     tags.by_name.map do |tag|
       link_to [@larp, tag], class: "tag" do
@@ -19,4 +23,5 @@ module TagsHelper
     hint += " ; <a href='#' id='see-tags' data-content='#{display_tags @larp.tags, with_line_breaks: true}'>see existing tags</a>" if @larp.tags.any?
     form.input :tags_string, label: "Tags", hint: hint, input_html: { data: { role: "tagsinput" } }
   end
+
 end

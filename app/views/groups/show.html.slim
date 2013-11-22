@@ -12,8 +12,9 @@
     h3 Name
     p= @group.name
 
-    h3 Tags
-    = display_tags @group.tags
+    = asset_show_tags_section @group
+
+    = asset_show_included_documents_section @group
 
     h3 Description
     = @group.description.try :html_safe

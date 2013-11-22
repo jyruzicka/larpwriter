@@ -12,8 +12,7 @@
       h3 Last name
       = @organizer.last_name
 
-      h3 Tags
-      = display_tags @organizer.tags
+      = asset_show_tags_section @organizer
 
       h3 Email
       = mail_to @organizer.email

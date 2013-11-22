@@ -1,0 +1,8 @@
+// required: false else we have this error/bug:
+// http://stackoverflow.com/questions/7168645/invalid-form-control-only-in-google-chrome
+.nested-fields.well
+  = link_to_remove_association "no longer include", f, class: "pull-right remove-association"
+  = f.input :documentable_type,  label: "Type", required: false, collection: ["Pc", "Npc", "Group"], input_html: {data: {role: "target-type-selector"}}, selected: "#{f.object.documentable_type.presence || 'Pc'}"
+  = f.association :documentable, label: "PC", required: false, collection: @larp.pcs.by_name,  input_html: {data: {role: "target-selector", "target-type" => "Pc"}}
+  = f.association :documentable, label: "NPC", required: false, collection: @larp.npcs.by_name, input_html: {data: {role: "target-selector", "target-type" => "Npc"}}
+  = f.association :documentable, label: "Group", required: false, collection: @larp.groups.by_name, input_html: {data: {role: "target-selector", "target-type" => "Group"}}
