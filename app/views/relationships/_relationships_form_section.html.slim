@@ -1,4 +1,3 @@
-h3 Relationships
 - if @larp.pcs.scoped.any? or @larp.npcs.scoped.any? or @larp.groups.scoped.any?
   .nested-fields-section
     = f.simple_fields_for :as_origin_relationships, asset.as_origin_relationships.rank(:rank), html: {novalidate: true} do |as_origin_relationship|

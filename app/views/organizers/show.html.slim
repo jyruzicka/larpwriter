@@ -6,16 +6,16 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-      h3 First name
-      = @organizer.first_name
+      label First name
+      p= @organizer.first_name
 
-      h3 Last name
-      = @organizer.last_name
+      label Last name
+      p= @organizer.last_name
 
       = asset_show_tags_section @organizer
 
-      h3 Email
-      = mail_to @organizer.email
+      label Email
+      p= mail_to @organizer.email
 
-      h3 Phone numbers
-      = @organizer.phone_numbers
+      label Phone numbers
+      p= @organizer.phone_numbers

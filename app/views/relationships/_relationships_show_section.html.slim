@@ -1,8 +1,8 @@
-h3 Relationships (#{asset.as_origin_relationships.count})
 - if (as_target_relationships_without_reverse = asset.as_target_relationships.without_reverse).any?
   p.text-warning.small-info
     span.glyphicon.glyphicon-warning-sign
     |&nbsp;
     = links_to_assets as_target_relationships_without_reverse.map(&:origin)
     |&nbsp; have a relationship towards #{asset.name} but #{asset.name} has no relationships towards them
-ul.sortable-list= render asset.as_origin_relationships.rank(:rank)
+- if asset.as_origin_relationships.any?
+  ul.sortable-list= render asset.as_origin_relationships.rank(:rank)

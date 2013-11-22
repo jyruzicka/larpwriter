@@ -1,26 +1,34 @@
-= simple_form_for [@larp, @group] do |f|
-  = f.input :name, autofocus: true
+.panel.panel-default.panel-asset
+  .panel-body
+    = simple_form_for [@larp, @group] do |f|
+      = render "nav"
 
-  = tags_input f
+      .tab-content.tab-content-asset
+        #infos.tab-pane.active
+          = f.input :name, autofocus: true
 
-  = f.input :attached_picture, label: "Picture"
-  - if @group.attached_picture.exists?
-    = f.check_box :remove_attached_picture
-    |&nbsp;Remove existing picture
+          = tags_input f
 
-  = f.input :description, input_html: { class: "redactor" }
+          = f.input :attached_picture, label: "Picture"
+          - if @group.attached_picture.exists?
+            = f.check_box :remove_attached_picture
+            |&nbsp;Remove existing picture
 
-  = render "application/included_documents_form_section", asset: @group, f: f
+          = render "application/included_documents_form_section", asset: @group, f: f
 
-  h3 Members
-  - if @larp.pcs.any? or @larp.npcs.any?
-    .nested-fields-section
-      = f.simple_fields_for :memberships, @group.memberships.rank(:rank), html: {novalidate: true} do |membership|
-        = render "membership_fields", f: membership
-      p.links= link_to_add_association "add a new member", f, :memberships
-  - else
-    p You'll be able to add members once you'll have created PCs or NPCs.
+        #description.tab-pane
+          = f.input :description, label: false, input_html: { class: "redactor" }
 
-  = render "relationships/relationships_form_section", f: f, asset: @group
+        #members.tab-pane
+          - if @larp.pcs.any? or @larp.npcs.any?
+            .nested-fields-section
+              = f.simple_fields_for :memberships, @group.memberships.rank(:rank), html: {novalidate: true} do |membership|
+                = render "membership_fields", f: membership
+              p.links= link_to_add_association "add a new member", f, :memberships
+          - else
+            p You'll be able to add members once you'll have created PCs or NPCs.
 
-  = f.button :submit, class: "btn btn-info"
+        #relationships.tab-pane
+          = render "relationships/relationships_form_section", f: f, asset: @group
+
+        = f.button :submit, class: "btn btn-info"

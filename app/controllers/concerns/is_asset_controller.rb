@@ -19,7 +19,7 @@ module IsAssetController
     session[:last_seen_asset_infos] ||= {}
     session[:last_seen_asset_infos][@larp.id] ||= []
     session[:last_seen_asset_infos][@larp.id] << seen_asset_infos unless session[:last_seen_asset_infos][@larp.id].include?(seen_asset_infos)
-    session[:last_seen_asset_infos][@larp.id].shift if session[:last_seen_asset_infos][@larp.id].size > 5
+    session[:last_seen_asset_infos][@larp.id].shift if session[:last_seen_asset_infos][@larp.id].size > 10
   end
 
   def get_larp

@@ -1,0 +1,9 @@
+ul.nav.nav-tabs
+  li.active
+    a href="#infos" data-toggle="tab" Infos
+  li
+    a href="#description" data-toggle="tab" Description
+  li
+    a href="#members" data-toggle="tab" Members (#{@group.memberships.count})
+  li
+    a href="#relationships" data-toggle="tab" Relationships (#{@group.as_origin_relationships.count})

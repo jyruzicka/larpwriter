@@ -6,23 +6,24 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    h3 Name
-    = @document.name
+    label Name
+    p= @document.name
 
     = asset_show_tags_section @document
 
-    h3 Is included in all PCs?
-    = @document.is_included_in_all_pcs
+    label Is included in all PCs?
+    p= @document.is_included_in_all_pcs
 
-    h3 Is included in all NPCs?
-    = @document.is_included_in_all_npcs
+    label Is included in all NPCs?
+    p= @document.is_included_in_all_npcs
 
-    h3 Included in
+    label Included in
     p= links_to_assets @document.asset_documents.map(&:documentable)
 
-    h3 File
-    - if @document.file.exists?
-      p= link_to @document.file_file_name, @document.file.url
+    label File
+    p
+      - if @document.file.exists?
+        = link_to @document.file_file_name, @document.file.url
 
-    h3 Content
+    label Content
     = @document.content

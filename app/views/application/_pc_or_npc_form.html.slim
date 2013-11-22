@@ -1,32 +1,39 @@
-= simple_form_for [@larp, pc_or_npc] do |f|
-  = f.input :name, autofocus: true
+.panel.panel-default.panel-asset
+  .panel-body
+    = simple_form_for [@larp, pc_or_npc] do |f|
+      = render "pc_or_npc_nav", pc_or_npc: pc_or_npc
 
-  = tags_input f
+      .tab-content.tab-content-asset
+        #infos.tab-pane.active
+          = f.input :name, autofocus: true
 
-  - if pc_or_npc.is_a? Pc
-    = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
-  - else
-    = f.association :npc_player, collection: @larp.npc_players.by_name, label_method: :name_with_pc_or_npc_names
+          = tags_input f
 
-  = f.input :attached_picture, label: "Picture"
-  - if pc_or_npc.attached_picture.exists?
-    = f.check_box :remove_attached_picture
-    |&nbsp;Remove existing picture
+          - if pc_or_npc.is_a? Pc
+            = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
+          - else
+            = f.association :npc_player, collection: @larp.npc_players.by_name, label_method: :name_with_pc_or_npc_names
 
-  = render "application/included_documents_form_section", asset: pc_or_npc, f: f
+          = f.input :attached_picture, label: "Picture"
+          - if pc_or_npc.attached_picture.exists?
+            = f.check_box :remove_attached_picture
+            |&nbsp;Remove existing picture
 
-  h3 Groups
-  - if @larp.groups.any?
-    .nested-fields-section
-      = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
-        = render "membership_for_pc_or_npc_fields", f: membership
-      p.links= link_to_add_association "include into a group", f, :memberships, partial: "membership_for_pc_or_npc_fields"
-  - else
-    p You'll be able to include the PC or NPC into a group once you'll have created at least one group.
+          = render "application/included_documents_form_section", asset: pc_or_npc, f: f
 
-  h3 Description
-  = f.input :description, label: false, input_html: { class: "redactor" }
+          label Groups
+          - if @larp.groups.any?
+            .nested-fields-section
+              = f.simple_fields_for :memberships, html: {novalidate: true} do |membership|
+                = render "membership_for_pc_or_npc_fields", f: membership
+              p.links= link_to_add_association "include into a group", f, :memberships, partial: "membership_for_pc_or_npc_fields"
+          - else
+            p You'll be able to include the PC or NPC into a group once you'll have created at least one group.
 
-  = render "relationships/relationships_form_section", f: f, asset: pc_or_npc
+        #description.tab-pane
+          = f.input :description, label: false, input_html: { class: "redactor" }
 
-  = f.button :submit, class: "btn btn-info"
+        #relationships.tab-pane
+          = render "relationships/relationships_form_section", f: f, asset: pc_or_npc
+
+        = f.button :submit, class: "btn btn-info"

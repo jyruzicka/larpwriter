@@ -3,10 +3,10 @@
 .nested-fields.well
   = link_to_remove_association "remove this relationship", f, class: "pull-right remove-association", data: {confirm: "Are you sure?"}
 
-  = f.input :target_type,  required: false, collection: ["Pc", "Npc", "Group"], input_html: {data: {role: "target-type-selector"}}, selected: "#{f.object.target_type.presence || 'Pc'}"
-  = f.association :target, required: false, collection: @larp.pcs.by_name,  input_html: {data: {role: "target-selector", "target-type" => "Pc"}}
-  = f.association :target, required: false, collection: @larp.npcs.by_name, input_html: {data: {role: "target-selector", "target-type" => "Npc"}}
-  = f.association :target, required: false, collection: @larp.groups.by_name, input_html: {data: {role: "target-selector", "target-type" => "Group"}}
+  = f.input :target_type, label: "Type", required: false, collection: ["Pc", "Npc", "Group"], input_html: {data: {role: "target-type-selector"}}, selected: "#{f.object.target_type.presence || 'Pc'}"
+  = f.association :target, label: "PC", required: false, collection: @larp.pcs.by_name,  input_html: {data: {role: "target-selector", "target-type" => "Pc"}}
+  = f.association :target, label: "NPC", required: false, collection: @larp.npcs.by_name, input_html: {data: {role: "target-selector", "target-type" => "Npc"}}
+  = f.association :target, label: "Group", required: false, collection: @larp.groups.by_name, input_html: {data: {role: "target-selector", "target-type" => "Group"}}
 
   = f.input :target_description
 
