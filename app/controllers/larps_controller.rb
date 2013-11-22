@@ -1,5 +1,5 @@
 class LarpsController < ApplicationController
-  layout "application",           only: [:new, :create]
+  layout "application", only: [:new, :create]
 
   before_action :authenticate_user!
   before_action :get_larp,        except: [:new, :create]

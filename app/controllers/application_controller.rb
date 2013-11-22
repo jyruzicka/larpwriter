@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+  # hackish but useful!
+  def current_asset
+    @current_asset ||= @tag || @group || @pc || @npc || @player || @npc_player || @document || @organizer
+  end
+  helper_method :current_asset
+
 end

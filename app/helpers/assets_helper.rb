@@ -4,11 +4,6 @@ module AssetsHelper
     controller_name.chop.to_sym
   end
 
-  # hackish but useful!
-  def current_asset
-    @current_asset ||= @tag || @group || @pc || @npc || @player || @npc_player || @document || @organizer
-  end
-
   def current_asset_model_name
     controller_name.chop.camelize.constantize.model_name.human
   end

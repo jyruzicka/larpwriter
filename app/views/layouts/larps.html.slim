@@ -41,4 +41,10 @@ html
               span.badge= @larp.send(plural_asset_type).count
               = plural_asset_type.to_s.humanize
 
+        - if session[:last_seen_asset_infos] && session[:last_seen_asset_infos][@larp.id]
+          h4 Last seen
+          .list-group
+            - session[:last_seen_asset_infos][@larp.id].each do |name_and_path|
+              = link_to name_and_path.first, name_and_path.last, class: "list-group-item"
+
     = render "layouts/bottom"
