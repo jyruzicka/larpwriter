@@ -1,5 +1,6 @@
 joe_organizer:
   first_name: joe
+  name: joe
   email: joe@example.com
   user: joe
   larp: joe_larp
