@@ -56,3 +56,5 @@ group :test do
   gem 'launchy'
   gem 'single_test'
 end
+
+gem 'rails_12factor', group: :production
