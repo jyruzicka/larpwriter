@@ -33,6 +33,7 @@
                   li= link_to "Mails Viewer", mails_viewer_path
                 - if Rails.env.production?
                   li= link_to "papertrail", "https://addons-sso.heroku.com/apps/new-larpwriter/addons/papertrail:choklad"
+                  li= link_to "New Relic", "https://addons-sso.heroku.com/apps/new-larpwriter/addons/newrelic:stark"
         - else
           li= link_to "Sign in", new_user_session_path
           li= link_to "Sign up", new_user_registration_path
