@@ -7,7 +7,7 @@
 .panel.panel-default.panel-asset
   .panel-body
     - if player_or_npc_player.attached_picture.exists?
-      = image_tag player_or_npc_player.attached_picture.url(:medium), class: "pull-right"
+      = image_tag player_or_npc_player.attached_picture.url(:medium), class: "pull-right, img-thumbnail"
 
     label First name
     p= player_or_npc_player.first_name

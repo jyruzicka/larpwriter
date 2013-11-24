@@ -1,6 +1,6 @@
 li.well{draggable="true" data-change-position-path="#{change_position_larp_relationship_path @larp, relationship}"}
   - if relationship.picture.exists?
-    = image_tag relationship.picture.url(:medium), class: "pull-right"
+    = image_tag relationship.picture.url(:medium), class: "pull-right img-thumbnail"
 
   h4= link_to relationship.target_name, [@larp, relationship.target]
   .description= display_description relationship.target_description

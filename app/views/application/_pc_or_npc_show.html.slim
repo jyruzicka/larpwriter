@@ -12,7 +12,7 @@
 
       #infos.tab-pane.active
         - if pc_or_npc.picture.exists?
-          = image_tag pc_or_npc.picture.url(:medium), class: "pull-right"
+          = image_tag pc_or_npc.picture.url(:medium), class: "pull-right img-thumbnail"
 
         label Name
         p= pc_or_npc.name
