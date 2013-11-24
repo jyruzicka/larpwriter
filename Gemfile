@@ -27,6 +27,7 @@ gem 'attribute_normalizer'
 gem 'paperclip'
 gem 'marco-polo'
 gem 'ranked-model'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'dotenv-rails'
