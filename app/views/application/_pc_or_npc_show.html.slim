@@ -6,7 +6,7 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    = render "pc_or_npc_nav", pc_or_npc: pc_or_npc
+    = render "pc_or_npc_nav", pc_or_npc: pc_or_npc, hide_empty_tabs: true
 
     .tab-content.tab-content-asset
 
@@ -19,18 +19,20 @@
 
         = asset_show_tags_section pc_or_npc
 
-        label Groups
-        p= links_to_assets pc_or_npc.groups.by_name
+        - if pc_or_npc.memberships.any?
+          label Groups
+          p= links_to_assets pc_or_npc.groups.by_name
 
-        label #{pc_or_npc.is_a?(Pc) ? 'Player' : 'NPC Player'}
-        p
-          - if pc_or_npc.player_or_npc_player
-            = link_to pc_or_npc.player_or_npc_player_name, [@larp, pc_or_npc.player_or_npc_player]
+        - if pc_or_npc.player_or_npc_player
+          label #{pc_or_npc.is_a?(Pc) ? 'Player' : 'NPC Player'}
+          p= link_to pc_or_npc.player_or_npc_player_name, [@larp, pc_or_npc.player_or_npc_player]
 
         = asset_show_included_documents_section pc_or_npc
 
-      #description.tab-pane
-        = pc_or_npc.description.try :html_safe
+      - if pc_or_npc.description.present?
+        #description.tab-pane
+          = pc_or_npc.description.html_safe
 
-      #relationships.tab-pane
-        = render "relationships/relationships_show_section", asset: pc_or_npc
+      - if pc_or_npc.as_origin_relationships.any?
+        #relationships.tab-pane
+          = render "relationships/relationships_show_section", asset: pc_or_npc

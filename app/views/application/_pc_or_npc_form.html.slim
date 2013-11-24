@@ -1,7 +1,7 @@
 .panel.panel-default.panel-asset
   .panel-body
     = simple_form_for [@larp, pc_or_npc] do |f|
-      = render "pc_or_npc_nav", pc_or_npc: pc_or_npc
+      = render "pc_or_npc_nav", pc_or_npc: pc_or_npc, hide_empty_tabs: false
 
       .tab-content.tab-content-asset
         #infos.tab-pane.active

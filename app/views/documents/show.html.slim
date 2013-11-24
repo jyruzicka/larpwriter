@@ -11,19 +11,20 @@
 
     = asset_show_tags_section @document
 
-    label Is included in all PCs?
-    p= @document.is_included_in_all_pcs
+    - if @document.is_included_in_all_pcs
+      label Is included in all PCs
 
-    label Is included in all NPCs?
-    p= @document.is_included_in_all_npcs
+    - if @document.is_included_in_all_npcs
+      label Is included in all NPCs
 
-    label Included in
-    p= links_to_assets @document.asset_documents.map(&:documentable)
+    - if @document.asset_documents.any?
+      label Included in
+      p= links_to_assets @document.asset_documents.map(&:documentable)
 
-    label File
-    p
-      - if @document.file.exists?
-        = link_to @document.file_file_name, @document.file.url
+    - if @document.file.exists?
+      label File
+      p= link_to @document.file_file_name, @document.file.url
 
-    label Content
-    = @document.content
+    - if @document.content.present?
+      label Content
+      = @document.content

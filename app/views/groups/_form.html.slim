@@ -1,7 +1,7 @@
 .panel.panel-default.panel-asset
   .panel-body
     = simple_form_for [@larp, @group] do |f|
-      = render "nav"
+      = render "nav", hide_empty_tabs: false
 
       .tab-content.tab-content-asset
         #infos.tab-pane.active

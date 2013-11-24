@@ -6,7 +6,7 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    = render "nav"
+    = render "nav", hide_empty_tabs: true
 
     .tab-content.tab-content-asset
       #infos.tab-pane.active
@@ -20,11 +20,12 @@
 
         = asset_show_included_documents_section @group
 
-      #description.tab-pane
-        = @group.description.try :html_safe
+      - if @group.description.present?
+        #description.tab-pane
+          = @group.description.html_safe
 
-      #members.tab-pane
-        - if @group.memberships.any?
+      - if @group.memberships.any?
+        #members.tab-pane
           ul.sortable-list
             - @group.memberships.rank(:rank).each do |membership|
               li.well{draggable="true" data-change-position-path="#{change_position_larp_membership_path @larp, membership}"}
@@ -33,5 +34,6 @@
                 h4= link_to membership.target_name, [@larp, membership.target]
                 .description= simple_format membership.target_description
 
-      #relationships.tab-pane
-        = render "relationships/relationships_show_section", asset: @group
+      - if @group.as_origin_relationships.any?
+        #relationships.tab-pane
+          = render "relationships/relationships_show_section", asset: @group

@@ -1,7 +1,9 @@
 module TagsHelper
 
   def asset_show_tags_section asset
-    content_tag(:label, "Tags") + content_tag(:p, display_tags(asset.tags))
+    if asset.tags.any?
+      content_tag(:label, "Tags") + content_tag(:p, display_tags(asset.tags))
+    end
   end
 
   def display_tags tags, with_line_breaks: false, with_count: false
