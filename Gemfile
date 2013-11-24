@@ -20,6 +20,7 @@ gem 'cocoon'
 
 # backend
 gem 'pg'
+gem 'puma'
 gem 'devise'
 gem 'quicklog'
 gem 'attribute_normalizer'

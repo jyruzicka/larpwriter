@@ -191,6 +191,8 @@ GEM
     pry-stack_explorer (0.4.9.1)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    puma (2.6.0)
+      rack (>= 1.1, < 2.0)
     quicklog (0.2.0)
       debug_inspector
     quiet_assets (1.0.2)
@@ -302,6 +304,7 @@ DEPENDENCIES
   overcommit
   paperclip
   pg
+  puma
   quicklog
   quiet_assets
   rack-livereload
