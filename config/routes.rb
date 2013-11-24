@@ -1,7 +1,11 @@
 Larpwriter::Application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
+
   root to: "pages#home"
-  get "help" => "pages#help"
+
+  get "support"       => "pages#support"
+  get "documentation" => "pages#documentation"
+  get "forum"         => "pages#forum"
 
   resources :larps do
     resources :tags

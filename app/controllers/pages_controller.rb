@@ -1,8 +1,13 @@
 class PagesController < ApplicationController
+  def documentation
+  end
+
+  def forum
+  end
+
   def home
   end
 
-  def help
-    render text: "Coming soon..."
+  def support
   end
 end

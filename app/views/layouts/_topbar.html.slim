@@ -10,6 +10,7 @@
         |Larpwriter
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
+        li= link_to "Support", support_path
         - if user_signed_in?
           li= link_to "Create a new larp", new_larp_path
           - unless current_user.larps.count.zero?
