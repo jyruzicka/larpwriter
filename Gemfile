@@ -28,6 +28,7 @@ gem 'paperclip'
 gem 'marco-polo'
 gem 'ranked-model'
 gem 'aws-sdk'
+gem 'rollbar'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -59,3 +60,4 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'

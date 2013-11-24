@@ -21,8 +21,18 @@
                 - current_user.larps.by_name.each do |larp|
                   li= link_to larp.name, larp_path(larp)
           li= link_to "Sign out", destroy_user_session_path, method: :delete
-          - if current_user.site_admin && Rails.env.development?
-            li= link_to "Mails Viewer", mails_viewer_path
+          - if current_user.site_admin
+            li.dropdown
+              a.dropdown-toggle href="#" data-toggle="dropdown"
+                |Admin links
+                b.caret
+              ul.dropdown-menu
+                li= link_to "Rollbar", "https://rollbar.com/project/5857/"
+                li= link_to "Mandrill", "https://addons-sso.heroku.com/apps/new-larpwriter/addons/mandrill:starter"
+                - if Rails.env.development?
+                  li= link_to "Mails Viewer", mails_viewer_path
+                - if Rails.env.production?
+                  li= link_to "papertrail", "https://addons-sso.heroku.com/apps/new-larpwriter/addons/papertrail:choklad"
         - else
           li= link_to "Sign in", new_user_session_path
           li= link_to "Sign up", new_user_registration_path
