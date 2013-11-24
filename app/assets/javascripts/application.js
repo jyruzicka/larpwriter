@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.sortable
-//= require redactor-rails
 //= require bootstrap-datepicker/core
 //= require cocoon
 //= require jquery.autosize

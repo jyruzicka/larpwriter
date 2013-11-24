@@ -1,5 +1,4 @@
 Larpwriter::Application.routes.draw do
-  mount RedactorRails::Engine => '/redactor_rails'
   devise_for :users, controllers: { registrations: "registrations" }
   root to: "pages#home"
   get "help" => "pages#help"

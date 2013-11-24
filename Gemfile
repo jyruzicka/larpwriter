@@ -15,7 +15,6 @@ gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'simple_form'
-gem 'redactor-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'cocoon'
 
