@@ -15,13 +15,15 @@
     label First name
     p= @organizer.first_name
 
-    label Last name
-    p= @organizer.last_name
+    - if @organizer.last_name.present?
+      label Last name
+      p= @organizer.last_name
 
     = asset_show_tags_section @organizer
 
     label Email
     p= mail_to @organizer.email
 
-    label Phone numbers
-    p= @organizer.phone_numbers
+    - if @organizer.phone_numbers.present?
+      label Phone numbers
+      p= @organizer.phone_numbers
