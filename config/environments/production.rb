@@ -91,4 +91,15 @@ Larpwriter::Application.configure do
     authentication: :plain
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  # from https://devcenter.heroku.com/articles/paperclip-s3
+  config.paperclip_defaults = {
+    storage:            :s3,
+    s3_credentials:     {
+      bucket:             ENV['AWS_BUCKET'],
+      access_key_id:      ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key:  ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
+
 end
