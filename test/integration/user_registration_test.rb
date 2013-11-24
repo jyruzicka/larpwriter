@@ -2,11 +2,6 @@ require "test_helper"
 
 class UserRegistrationTest < ActionDispatch::IntegrationTest
 
-  # FIXME for some reason it's necessary else user is automatically logged in
-  def setup
-    logout :user
-  end
-
   test "it works when using correct credentials" do
     visit "/"
     click_link "Sign up"

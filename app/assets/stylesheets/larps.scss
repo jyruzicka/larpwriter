@@ -7,13 +7,6 @@
   }
 }
 
-.actions-icons {
-  text-align: center;
-  span {
-    margin-right: 10px;
-  }
-}
-
 .larp-sidebar {
   .add-asset {
     background-color: #00f;
@@ -59,4 +52,24 @@
 
 .tab-content-asset {
   margin-top: 20px;
+}
+
+.label-small {
+  font-size: 0.8em;
+}
+
+.img-thumbnail-in-index {
+  margin-right: 10px;
+}
+
+.asset-name {
+  .asset-edit-link {
+    display: none;
+  }
+  &:hover {
+    .asset-edit-link {
+      color: #3498DB;
+      display: inline;
+    }
+  }
 }

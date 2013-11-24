@@ -1,1 +1,29 @@
-= render "application/asset_index", assets: @npc_players
+= content_for :html_title, "NPC players"
+
+= content_for :asset_actions
+  li.asset-action= link_to "add one", [:new, @larp, :npc_player], class: "btn btn-info btn-xs"
+
+- if @npc_players.count.zero?
+  p There is no NPC players yet.
+
+- else
+  table.table.table-striped.table-hover.table-bordered
+
+    thead
+      th First name
+      th Last name
+      th NPCs
+      th Email
+      th Tags
+
+    tbody
+      - @npc_players.each do |npc_player|
+        tr
+          td.asset-name
+            - if npc_player.attached_picture.exists?
+              = image_tag npc_player.attached_picture.url(:thumbnail), class: "img-thumbnail img-thumbnail-in-index"
+            = links_to_asset_show_and_edit npc_player, attribute: :first_name
+          td= npc_player.last_name
+          td= links_to_assets npc_player.npcs
+          td= mail_to npc_player.email
+          td= display_tags npc_player.tags

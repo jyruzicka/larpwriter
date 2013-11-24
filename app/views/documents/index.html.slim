@@ -1,1 +1,24 @@
-= render "application/asset_index", assets: @documents
+= content_for :html_title, "Documents"
+
+= content_for :asset_actions
+  li.asset-action= link_to "add one", [:new, @larp, :document], class: "btn btn-info btn-xs"
+
+- if @documents.count.zero?
+  p There is no documents yet.
+
+- else
+  table.table.table-striped.table-hover.table-bordered
+
+    thead
+      th Name
+      th File
+      th Tags
+
+    tbody
+      - @documents.each do |document|
+        tr
+          td.asset-name= links_to_asset_show_and_edit document
+          td
+            - if document.file.exists?
+              = link_to document.file_file_name, document.file.url
+          td= display_tags document.tags

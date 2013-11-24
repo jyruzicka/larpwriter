@@ -6,13 +6,13 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-    h3 Name
-    = tag_span @tag
+    label Name
+    p= tag_span @tag
 
-    h3 Description
+    label Description
     = @tag.description
 
-    h3= pluralize @tag.taggings.count, "tagged item"
+    label= pluralize @tag.taggings.count, "tagged item"
     - if @tag.taggings.any?
       table.table.table-striped.table-hover.table-bordered
         tbody

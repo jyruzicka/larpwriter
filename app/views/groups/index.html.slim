@@ -1,1 +1,25 @@
-= render "application/asset_index", assets: @groups
+= content_for :html_title, "Groups"
+
+= content_for :asset_actions
+  li.asset-action= link_to "add one", [:new, @larp, :group], class: "btn btn-info btn-xs"
+
+- if @groups.count.zero?
+  p There is no groups yet.
+
+- else
+  table.table.table-striped.table-hover.table-bordered
+
+    thead
+      th Name
+      th # members
+      th Tags
+
+    tbody
+      - @groups.each do |group|
+        tr
+          td.asset-name
+            - if group.picture.exists?
+              = image_tag group.picture.url(:thumbnail), class: "img-thumbnail img-thumbnail-in-index"
+            = links_to_asset_show_and_edit group
+          td= group.memberships_count
+          td= display_tags group.tags

@@ -34,4 +34,7 @@ Larpwriter::Application.configure do
   config.logger = Logger.new Rails.root.join("log", Rails.env + ".log"), 3, 5 * 1024 * 1024
 
   config.action_mailer.default_url_options = { host: ENV['HOST'] }
+
+  # for https://github.com/pragmaticly/mails_viewer
+  config.action_mailer.delivery_method = :file
 end

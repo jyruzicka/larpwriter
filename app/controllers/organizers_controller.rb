@@ -12,7 +12,8 @@ class OrganizersController < ApplicationController
   def create
     @organizer = @larp.organizers.build organizer_params
     if @organizer.save
-      redirect_to larp_organizer_path(@larp, @organizer), notice: "Organizer successfully added!"
+      ApplicationMailer.new_organizer_invitation(organizer: @organizer, inviter: current_user.as_organizer_in_larp(@larp)).deliver
+      redirect_to larp_organizer_path(@larp, @organizer), notice: "Organizer successfully added! We've just sent him/her an invitation email."
     else
       render :new
     end

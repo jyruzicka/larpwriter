@@ -1,9 +1,5 @@
 module AssetsHelper
 
-  def asset_type
-    controller_name.chop.to_sym
-  end
-
   def current_asset_model_name
     controller_name.chop.camelize.constantize.model_name.human
   end
@@ -16,16 +12,10 @@ module AssetsHelper
     end
   end
 
-  def index_attribute_names asset_type
-    case asset_type
-    when :group      then %i(attached_picture name memberships_count)
-    when :pc         then %i(picture name player_or_npc_player_name group_names)
-    when :npc        then %i(picture name player_or_npc_player_name group_names)
-    when :player     then %i(attached_picture first_name last_name email phone_numbers)
-    when :npc_player then %i(attached_picture first_name last_name email phone_numbers)
-    when :document   then %i(name file)
-    when :organizer  then %i(first_name last_name email phone_numbers)
-    end
+  def links_to_asset_show_and_edit asset, attribute: :name
+    link_to(asset.send(attribute), [@larp, asset]) +
+    " " +
+    link_to([:edit, @larp, asset], class: "asset-edit-link") { content_tag :span, "", class: "glyphicon glyphicon-pencil" }
   end
 
   def links_to_assets assets

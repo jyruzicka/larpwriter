@@ -1,0 +1,22 @@
+p Hi #{@organizer.first_name}!
+
+p #{@inviter.name} has invited you to participate in the organization of the larp "#{@organizer.larp.name}", using Larpwriter.
+
+p #{link_to "Larpwriter", root_url} is a free website that simplifies a lot the organization of larps.
+
+- if @organizer.has_account?
+  p To participate, go to the following link to access the larp:
+  p= link_to larp_url(@organizer.larp), larp_url(@organizer.larp)
+
+- else
+  p To participate, go to the following link to create your account using the email '#{@organizer.email}':
+  p= link_to new_user_registration_url, new_user_registration_url
+
+p If you are not #{@organizer.name} or not interested in participating, you can ignore this email.
+
+p
+  |Cheers,
+  br
+  |Florent for Larpwriter
+
+p Questions, feedback? Reply to this email or go the to #{link_to "Help page", help_url} to get in touch!

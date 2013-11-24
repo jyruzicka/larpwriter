@@ -1,1 +1,29 @@
-= render "application/asset_index", assets: @pcs
+= content_for :html_title, "PCs"
+
+= content_for :asset_actions
+  li.asset-action= link_to "add one", [:new, @larp, :pc], class: "btn btn-info btn-xs"
+
+- if @pcs.count.zero?
+  p There is no PCs yet.
+
+- else
+  table.table.table-striped.table-hover.table-bordered
+
+    thead
+      th Name
+      th Player
+      th Groups
+      th Tags
+
+    tbody
+      - @pcs.each do |pc|
+        tr
+          td.asset-name
+            - if pc.picture.exists?
+              = image_tag pc.picture.url(:thumbnail), class: "img-thumbnail img-thumbnail-in-index"
+            = links_to_asset_show_and_edit pc
+          td
+            - if pc.player
+              = link_to pc.player.name, [@larp, pc.player]
+          td= links_to_assets pc.groups
+          td= display_tags pc.tags

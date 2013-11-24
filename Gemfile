@@ -30,6 +30,7 @@ gem 'ranked-model'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'byebug'
 end
 
 group :development do
@@ -46,6 +47,8 @@ group :development do
 
   gem 'overcommit', require: false
   gem 'scss-lint', '0.7.0', require: false
+
+  gem 'mails_viewer'
 end
 
 group :test do

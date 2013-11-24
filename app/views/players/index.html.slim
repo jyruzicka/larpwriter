@@ -1,1 +1,29 @@
-= render "application/asset_index", assets: @players
+= content_for :html_title, "Players"
+
+= content_for :asset_actions
+  li.asset-action= link_to "add one", [:new, @larp, :player], class: "btn btn-info btn-xs"
+
+- if @players.count.zero?
+  p There is no players yet.
+
+- else
+  table.table.table-striped.table-hover.table-bordered
+
+    thead
+      th First name
+      th Last name
+      th PCs
+      th Email
+      th Tags
+
+    tbody
+      - @players.each do |player|
+        tr
+          td.asset-name
+            - if player.attached_picture.exists?
+              = image_tag player.attached_picture.url(:thumbnail), class: "img-thumbnail img-thumbnail-in-index"
+            = links_to_asset_show_and_edit player, attribute: :first_name
+          td= player.last_name
+          td= links_to_assets player.pcs
+          td= mail_to player.email
+          td= display_tags player.tags

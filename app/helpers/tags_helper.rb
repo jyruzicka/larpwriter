@@ -1,17 +1,15 @@
 module TagsHelper
 
   def asset_show_tags_section asset
-    content_tag(:label, "Tags") + display_tags(asset.tags)
+    content_tag(:label, "Tags") + content_tag(:p, display_tags(asset.tags))
   end
 
   def display_tags tags, with_line_breaks: false, with_count: false
-    content_tag :p do
-      tags.by_name.map do |tag|
-        link_to [@larp, tag], class: "tag" do
-          tag_span tag, with_count: with_count
-        end
-      end.join("#{'<br />' if with_line_breaks}").html_safe
-    end
+    tags.by_name.map do |tag|
+      link_to [@larp, tag], class: "tag" do
+        tag_span tag, with_count: with_count
+      end
+    end.join("#{'<br />' if with_line_breaks}").html_safe
   end
 
   def tag_span tag, with_count: false

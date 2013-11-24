@@ -1,1 +1,31 @@
-= render "application/asset_index", assets: @organizers
+= content_for :html_title, "Organizers"
+
+= content_for :asset_actions
+  li.asset-action= link_to "add one", [:new, @larp, :organizer], class: "btn btn-info btn-xs"
+
+- if @organizers.count.zero?
+  p There is no organizers yet.
+
+- else
+  table.table.table-striped.table-hover.table-bordered
+
+    thead
+      th First name
+      th Last name
+      th Email
+      th Phones
+      th Tags
+
+    tbody
+      - @organizers.each do |organizer|
+        tr
+          td.asset-name
+            = links_to_asset_show_and_edit organizer, attribute: :first_name
+            - unless organizer.has_account?
+              |&nbsp;
+              small
+                span.glyphicon.glyphicon-warning-sign.text-warning
+          td= organizer.last_name
+          td= mail_to organizer.email
+          td= organizer.phone_numbers
+          td= display_tags organizer.tags

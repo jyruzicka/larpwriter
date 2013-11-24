@@ -11,7 +11,7 @@
     .tab-content.tab-content-asset
       #infos.tab-pane.active
         - if @group.attached_picture.exists?
-          = image_tag @group.attached_picture.url(:medium), class: "pull-right"
+          = image_tag @group.attached_picture.url(:medium), class: "pull-right img-thumbnail"
 
         label Name
         p= @group.name

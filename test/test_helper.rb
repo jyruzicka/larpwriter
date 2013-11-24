@@ -25,7 +25,19 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  # email helpers
+
+  def last_email_sent_to email_address
+    ActionMailer::Base.deliveries.select { |email| email.to[0] == email_address }.last
+  end
+
+  def visit_link_in email: email, link_text: link_text
+    email_links = URI.extract email.body.to_s, ['http', 'https']
+    url = email_links.find { |link| link == link_text }
+    url ? visit(url) : raise("Link '#{link_text}' not found in '#{email.body}'")
+  end
+
+  # fixture helpers
 
   def joe
     users :joe

@@ -6,16 +6,22 @@
 
 .panel.panel-default.panel-asset
   .panel-body
-      label First name
-      p= @organizer.first_name
+    - unless @organizer.has_account?
+      p.text-warning
+        small
+          span.glyphicon.glyphicon-warning-sign
+          |&nbsp;This organizer has not created an account yet.
 
-      label Last name
-      p= @organizer.last_name
+    label First name
+    p= @organizer.first_name
 
-      = asset_show_tags_section @organizer
+    label Last name
+    p= @organizer.last_name
 
-      label Email
-      p= mail_to @organizer.email
+    = asset_show_tags_section @organizer
 
-      label Phone numbers
-      p= @organizer.phone_numbers
+    label Email
+    p= mail_to @organizer.email
+
+    label Phone numbers
+    p= @organizer.phone_numbers
