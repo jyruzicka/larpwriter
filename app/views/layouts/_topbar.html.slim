@@ -28,13 +28,13 @@
                 |Admin links
                 b.caret
               ul.dropdown-menu
-                li= link_to "Rollbar", "https://rollbar.com/project/5857/"
-                li= link_to "Mandrill", "https://addons-sso.heroku.com/apps/new-larpwriter/addons/mandrill:starter"
                 - if Rails.env.development?
                   li= link_to "Mails Viewer", mails_viewer_path
-                - if Rails.env.production?
-                  li= link_to "papertrail", "https://addons-sso.heroku.com/apps/new-larpwriter/addons/papertrail:choklad"
-                  li= link_to "New Relic", "https://addons-sso.heroku.com/apps/new-larpwriter/addons/newrelic:stark"
+                - if ENV['HEROKU_APP_NAME']
+                  li= link_to "papertrail", "https://addons-sso.heroku.com/apps/#{ENV['HEROKU_APP_NAME']}/addons/papertrail:choklad"
+                  li= link_to "New Relic", "https://addons-sso.heroku.com/apps/#{ENV['HEROKU_APP_NAME']}/addons/newrelic:stark"
+                  li= link_to "Rollbar", "https://addons-sso.heroku.com/apps/#{ENV['HEROKU_APP_NAME']}/addons/rollbar:free"
+                  li= link_to "Mandrill", "https://addons-sso.heroku.com/apps/#{ENV['HEROKU_APP_NAME']}/addons/mandrill:starter"
         - else
           li= link_to "Sign in", new_user_session_path
           li= link_to "Sign up", new_user_registration_path
