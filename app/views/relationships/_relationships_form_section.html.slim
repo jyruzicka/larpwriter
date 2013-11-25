@@ -1,4 +1,4 @@
-- if @larp.pcs.scoped.any? or @larp.npcs.scoped.any? or @larp.groups.scoped.any?
+- unless @larp.pcs.count.zero? and @larp.npcs.count.zero? and @larp.groups.count.zero?
   .nested-fields-section
     = f.simple_fields_for :as_origin_relationships, asset.as_origin_relationships.rank(:rank), html: {novalidate: true} do |as_origin_relationship|
       = render "application/as_origin_relationship_fields", f: as_origin_relationship
