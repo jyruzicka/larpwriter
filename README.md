@@ -1,4 +1,4 @@
-# Larpwriter
+# Larpwriter [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/Florent2/larpwriter)
 
 The complete rewrite of [larpwriter.com](http://www.larpwriter.com). Work in progress.
 
