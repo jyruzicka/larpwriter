@@ -1,5 +1,7 @@
 # Larpwriter
 
+The complete rewrite of [larpwriter.com](http://www.larpwriter.com). Work in progress.
+
 ## Installation
 
 * install the latest version of bundler: `gem update bundler`
@@ -22,10 +24,6 @@ easier for the other developers
 * when you add a new variable in your `.env` file, make sure to add the var name
 in `env.example` too
 * you can see all the delivered mails in development on http://localhost:3000/delivered_mails
-
-## Deployment
-
-[TODO]
 
 ## Run tests
 
