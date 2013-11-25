@@ -50,4 +50,5 @@ class ActiveSupport::TestCase
   def jack
     users :jack
   end
+
 end

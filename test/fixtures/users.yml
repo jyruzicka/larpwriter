@@ -5,3 +5,8 @@ joe:
 jack:
   email: jack@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'secret') %>
+
+site_admin:
+  email: admin@example.com
+  site_admin: true
+  encrypted_password: <%= User.new.send(:password_digest, 'secret') %>
