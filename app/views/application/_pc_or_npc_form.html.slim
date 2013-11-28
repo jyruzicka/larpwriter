@@ -31,7 +31,7 @@
             p You'll be able to include the PC or NPC into a group once you'll have created at least one group.
 
         #description.tab-pane
-          = f.input :description, label: false, input_html: { class: "redactor" }
+          = f.input :description, label: false, input_html: { class: "tinymce" }
 
         #relationships.tab-pane
           = render "relationships/relationships_form_section", f: f, asset: pc_or_npc

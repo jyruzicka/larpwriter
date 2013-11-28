@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'cocoon'
 gem 'actionview-encoded_mail_to'
+gem 'tinymce-rails'
 
 # backend
 gem 'pg'

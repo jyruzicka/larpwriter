@@ -17,7 +17,7 @@
           = render "application/included_documents_form_section", asset: @group, f: f
 
         #description.tab-pane
-          = f.input :description, label: false, input_html: { class: "redactor" }
+          = f.input :description, label: false, input_html: { class: "tinymce" }
 
         #members.tab-pane
           - if @larp.pcs.any? or @larp.npcs.any?

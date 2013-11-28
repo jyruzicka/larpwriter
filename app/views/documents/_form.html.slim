@@ -16,6 +16,6 @@
     p.links= link_to_add_association "include in another group, PC or NPC", f, :asset_documents, partial: "document_asset_document_fields"
 
   h3 Content
-  = f.input :content, label: false, input_html: { class: "redactor" }
+  = f.input :content, label: false, input_html: { class: "tinymce" }
 
   = f.button :submit, class: "btn btn-info"

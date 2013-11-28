@@ -18,4 +18,5 @@
 //= require jquery.autosize
 //= require bootstrap-tagsinput
 //= require bootstrap-colorpicker
+//= require tinymce
 //= require_tree .
