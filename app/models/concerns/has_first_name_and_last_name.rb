@@ -8,6 +8,13 @@ module HasFirstNameAndLastName
 
     validates_presence_of :first_name
 
-    normalize_attributes :first_name, :last_name
+    before_save :normalize_first_name_and_last_name
+
+    private
+
+    def normalize_first_name_and_last_name
+      first_name.squish! if first_name_changed?
+      last_name.squish!  if last_name_changed? && last_name.present?
+    end
   end
 end

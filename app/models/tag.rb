@@ -18,7 +18,7 @@ class Tag < ActiveRecord::Base
   private
 
   def set_color
-    self.color = %w(#F09EA4 #F3ECDC #B8DC2 #C797BF #8DD4F4 #95B2DE #D5E1A0 #97CA9F #F9CD90 #FEF59E).sample
+    self.color = %w(#F09EA4 #F3ECDC #B8DC23 #C797BF #8DD4F4 #95B2DE #D5E1A0 #97CA9F #F9CD90 #FEF59E).sample
   end
 
 end

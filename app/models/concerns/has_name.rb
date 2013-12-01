@@ -6,10 +6,16 @@ module HasName
 
     scope :by_name, -> { order :name }
 
-    normalize_attributes :name
+    before_save :normalize_name, if: :name_changed?
 
     def to_param
       "#{id}-#{name}".parameterize
+    end
+
+    private
+
+    def normalize_name
+      name.squish!
     end
   end
 end

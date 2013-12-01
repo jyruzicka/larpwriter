@@ -24,7 +24,6 @@ gem 'pg'
 gem 'puma'
 gem 'devise'
 gem 'quicklog'
-gem 'attribute_normalizer'
 gem 'paperclip'
 gem 'marco-polo'
 gem 'ranked-model'
@@ -58,6 +57,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'single_test'
+  gem 'temping'
 end
 
 gem 'rails_12factor', group: :production
