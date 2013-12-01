@@ -45,4 +45,5 @@ class LarpsController < ApplicationController
   def larp_params
     params[:larp].permit!
   end
+
 end

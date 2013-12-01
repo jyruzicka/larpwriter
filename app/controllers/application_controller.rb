@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_asset
 
+  def user_last_seen_assets_infos larp: larp
+    session[:last_seen_assets_infos] ||= {}
+    session[:last_seen_assets_infos][larp.id] ||= []
+  end
+  helper_method :user_last_seen_assets_infos
 end

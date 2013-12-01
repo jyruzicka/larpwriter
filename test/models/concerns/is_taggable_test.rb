@@ -11,7 +11,6 @@ class IsTaggableTest < ActiveSupport::TestCase
     end
   end
 
-
   class TagsAssociationThroughTagsString < ActiveSupport::TestCase
 
     setup do
