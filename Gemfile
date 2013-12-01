@@ -32,7 +32,6 @@ gem 'rollbar'
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'byebug' unless ENV['TRAVIS']
 end
 
 group :development do
@@ -51,6 +50,8 @@ group :development do
   gem 'scss-lint', '0.7.0', require: false
 
   gem 'mails_viewer'
+
+  gem 'byebug'
 end
 
 group :test do
