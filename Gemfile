@@ -32,7 +32,7 @@ gem 'rollbar'
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'byebug'
+  gem 'byebug' unless ENV['TRAVIS']
 end
 
 group :development do
