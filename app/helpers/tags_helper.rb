@@ -23,7 +23,7 @@ module TagsHelper
   def tags_input form
     hint = "to add a tag, type its name and press RETURN"
     hint += " ; <a href='#' id='see-tags' data-content='#{display_tags @larp.tags, with_line_breaks: true}'>see existing tags</a>" if @larp.tags.any?
-    form.input :tags_string, label: "Tags", hint: hint, input_html: { data: { role: "tagsinput" } }
+    form.input :tags_string, label: "Tags", hint: hint.html_safe, input_html: { data: { role: "tagsinput" } }
   end
 
 end
