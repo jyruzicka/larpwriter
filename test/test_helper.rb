@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require 'capybara/rails'
+require 'sucker_punch/testing/inline'
 
 # from https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
 include Warden::Test::Helpers
