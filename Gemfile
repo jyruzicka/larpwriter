@@ -29,6 +29,7 @@ gem 'marco-polo'
 gem 'ranked-model'
 gem 'aws-sdk'
 gem 'rollbar'
+gem 'sucker_punch'
 
 group :development, :test do
   gem 'dotenv-rails'
