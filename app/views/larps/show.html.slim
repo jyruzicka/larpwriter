@@ -10,4 +10,6 @@
     = link_to "#{@relationships_without_reverse_count} missing relationships", missing_larp_relationships_path(@larp)
     |.
 
-p= display_tags @larp.tags, with_count: true
+- if @larp.tags.any?
+  h2 Tags
+  p= display_tags @larp.tags, with_count: true
