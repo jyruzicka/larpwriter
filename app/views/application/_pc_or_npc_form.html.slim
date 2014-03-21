@@ -10,9 +10,17 @@
           = tags_input f
 
           - if pc_or_npc.is_a? Pc
-            = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
+            - if @larp.players.any?
+              = f.association :player, collection: @larp.players.by_name, label_method: :name_with_pc_or_npc_names
+            - else
+              label Player
+              p You'll be able to associate a player once you'll have created at least one player.
           - else
-            = f.association :npc_player, collection: @larp.npc_players.by_name, label_method: :name_with_pc_or_npc_names
+            - if @larp.npc_players.any?
+              = f.association :npc_player, collection: @larp.npc_players.by_name, label_method: :name_with_pc_or_npc_names
+            - else
+              label NPC Player
+              p You'll be able to associate a NPC player once you'll have created at least one NPC player.
 
           = f.input :attached_picture, label: "Picture"
           - if pc_or_npc.attached_picture.exists?
