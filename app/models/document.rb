@@ -6,6 +6,7 @@ class Document < ActiveRecord::Base
 
   has_attached_file :file
   validates_attachment_size :file, less_than: 20.megabytes, message: "must be less than 20 MB"
+  do_not_validate_attachment_file_type :file
   attr_accessor :remove_file
   before_save { |document| document.file = nil if remove_file }
 
