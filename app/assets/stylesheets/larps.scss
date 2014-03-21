@@ -63,8 +63,11 @@
 }
 
 .asset-name {
+  position: relative;
   .asset-edit-link {
     display: none;
+    position: absolute;
+    right: 10px;
   }
   &:hover {
     .asset-edit-link {
