@@ -26,6 +26,10 @@ in `env.example` too
 * you can see all the delivered mails in development on http://localhost:3000/delivered_mails
 * the debugger [byebug](https://github.com/deivid-rodriguez/byebug) is available
 
+### Bootstrap upgrade
+
+When upgrade the Bootswatch theme in `vendor/assets/stylesheets`, change `url('../fonts/glyphicons-halfings-regular.eot')` and similar to `font-url('glyphicons-halfings-regular.eot')`.
+
 ## Run tests
 
 * with `spring rake test`
