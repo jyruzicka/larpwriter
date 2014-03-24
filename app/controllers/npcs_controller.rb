@@ -39,7 +39,7 @@ class NpcsController < ApplicationController
 
   private
 
-  def get_asset
+  def get_asset # rubocop:disable AccessorMethodName
     @npc = @larp.npcs.find params[:id]
   end
 

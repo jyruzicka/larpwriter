@@ -39,7 +39,7 @@ class DocumentsController < ApplicationController
 
   private
 
-  def get_asset
+  def get_asset # rubocop:disable AccessorMethodName
     @document = @larp.documents.find params[:id]
   end
 

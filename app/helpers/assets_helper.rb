@@ -1,5 +1,4 @@
 module AssetsHelper
-
   def current_asset_model_name
     controller_name.chop.camelize.constantize.model_name.human
   end

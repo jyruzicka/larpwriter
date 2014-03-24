@@ -1,5 +1,4 @@
 module TagsHelper
-
   def asset_show_tags_section asset
     if asset.tags.any?
       content_tag(:label, "Tags") + content_tag(:p, display_tags(asset.tags))
@@ -25,5 +24,4 @@ module TagsHelper
     hint += " ; <a href='#' id='see-tags' data-content='#{display_tags @larp.tags, with_line_breaks: true}'>see existing tags</a>" if @larp.tags.any?
     form.input :tags_string, label: "Tags", hint: hint.html_safe, input_html: { data: { role: "tagsinput" } }
   end
-
 end

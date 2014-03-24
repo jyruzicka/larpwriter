@@ -39,7 +39,7 @@ class PcsController < ApplicationController
 
   private
 
-  def get_asset
+  def get_asset # rubocop:disable AccessorMethodName
     @pc = @larp.pcs.find params[:id]
   end
 

@@ -3,11 +3,11 @@ class ApplicationMailer < ActionMailer::Base
 
   def new_organizer_invitation organizer: organizer, inviter: inviter
     @organizer, @inviter = organizer, inviter
-    mail({
+    mail(
       to:             header_for(@organizer),
       subject:        "#{@inviter.name} invited you to participate in the larp #{@organizer.larp.name}!",
       "Message-ID" => random_message_id
-    })
+    )
   end
 
   private

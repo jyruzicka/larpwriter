@@ -1,7 +1,6 @@
 require "test_helper"
 
 class LarpCreationTest < ActionDispatch::IntegrationTest
-
   test "it works" do
     login_as joe, scope: :user
 

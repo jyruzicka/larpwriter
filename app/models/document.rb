@@ -9,5 +9,4 @@ class Document < ActiveRecord::Base
   do_not_validate_attachment_file_type :file
   attr_accessor :remove_file
   before_save { |document| document.file = nil if remove_file }
-
 end

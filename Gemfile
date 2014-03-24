@@ -46,7 +46,9 @@ group :development do
   gem 'rack-livereload'
   gem 'guard-ctags-bundler'
   gem 'guard-test'
+  gem 'guard-rubocop'
 
+  gem 'rubocop', require: false
   gem 'overcommit', require: false
   gem 'scss-lint', '0.7.0', require: false
 

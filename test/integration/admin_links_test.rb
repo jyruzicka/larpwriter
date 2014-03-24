@@ -1,7 +1,6 @@
 require "test_helper"
 
 class AdminLinksTest < ActionDispatch::IntegrationTest
-
   test "Site admin can see the admin links dropdown" do
     login_as users(:site_admin), scope: :user
 

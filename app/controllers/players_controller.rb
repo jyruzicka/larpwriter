@@ -39,7 +39,7 @@ class PlayersController < ApplicationController
 
   private
 
-  def get_asset
+  def get_asset # rubocop:disable AccessorMethodName
     @player = @larp.players.find params[:id]
   end
 

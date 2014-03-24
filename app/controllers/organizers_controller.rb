@@ -44,7 +44,7 @@ class OrganizersController < ApplicationController
 
   private
 
-  def get_asset
+  def get_asset # rubocop:disable AccessorMethodName
     @organizer = @larp.organizers.find params[:id]
   end
 

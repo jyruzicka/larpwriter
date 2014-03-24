@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   # hackish but useful!
-  def current_asset
+  def current_asset # rubocop:disable CyclomaticComplexity
     @current_asset ||= @tag || @group || @pc || @npc || @player || @npc_player || @document || @organizer
   end
   helper_method :current_asset

@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def action_name_for_breadcrumb
     case action_name
     when "create" then "new"
@@ -8,7 +7,7 @@ module ApplicationHelper
     end
   end
 
-  def bootstrap_class_for flash_type
+  def bootstrap_class_for flash_type # rubocop:disable MethodLength
     case flash_type
     when :success
       "alert-success"
@@ -22,5 +21,4 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
-
 end

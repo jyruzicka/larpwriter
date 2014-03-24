@@ -10,13 +10,13 @@ class Organizer < ActiveRecord::Base
   after_create :associate_to_user_having_the_same_email, unless: :user_id
 
   def has_account?
-    !!user_id
+    user_id
   end
 
   private
 
   def associate_to_user_having_the_same_email
-    if user = User.find_by_email(email)
+    if (user = User.find_by_email(email))
       update_column :user_id, user.id
     end
   end

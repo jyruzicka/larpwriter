@@ -2,7 +2,6 @@ require "test_helper"
 require "set"
 
 class IsTaggableTest < ActiveSupport::TestCase
-
   Temping.create :asset do
     include IsTaggable, IsAsset
     with_columns do |t|
@@ -12,7 +11,6 @@ class IsTaggableTest < ActiveSupport::TestCase
   end
 
   class TagsAssociationThroughTagsString < ActiveSupport::TestCase
-
     setup do
       @asset = Asset.create! name: "MyAsset", larp: joe_larp
     end
@@ -36,7 +34,7 @@ class IsTaggableTest < ActiveSupport::TestCase
 
     test "various tag names can be passed, separated by commas" do
       @asset.update_attributes! tags_string: "tag1, tag2"
-      assert_equal ["tag1", "tag2"].to_set, @asset.tags.pluck(:name).to_set
+      assert_equal %w(tag1 tag2).to_set, @asset.tags.pluck(:name).to_set
     end
 
     test "repetitions of tag name are ignored" do
@@ -64,11 +62,9 @@ class IsTaggableTest < ActiveSupport::TestCase
       @asset.update_attributes! tags_string: nil
       assert_equal 0, @asset.tags.count
     end
-
   end
 
   class TagsStringMethod < ActiveSupport::TestCase
-
     test "#tags_string returns list of associated tag names separated by commas and ordered alphabetically" do
       Asset.create! name: "MyAsset", larp: joe_larp, tags_string: "tag2, tag1"
       assert_equal "tag1, tag2", Asset.where(name: "MyAsset").first.tags_string
@@ -79,7 +75,5 @@ class IsTaggableTest < ActiveSupport::TestCase
       asset.tags_string = "foo"
       assert_equal "foo", asset.tags_string
     end
-
   end
-
 end

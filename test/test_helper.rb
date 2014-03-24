@@ -33,9 +33,9 @@ class ActiveSupport::TestCase
   end
 
   def visit_link_in email: email, link_text: link_text
-    email_links = URI.extract email.body.to_s, ['http', 'https']
+    email_links = URI.extract email.body.to_s, %w(http https)
     url = email_links.find { |link| link == link_text }
-    url ? visit(url) : raise("Link '#{link_text}' not found in '#{email.body}'")
+    url ? visit(url) : fail("Link '#{link_text}' not found in '#{email.body}'")
   end
 
   # fixture helpers
@@ -51,5 +51,4 @@ class ActiveSupport::TestCase
   def jack
     users :jack
   end
-
 end

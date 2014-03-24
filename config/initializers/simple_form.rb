@@ -3,7 +3,7 @@
 # http://stackoverflow.com/questions/14972253/simpleform-default-input-class
 # https://github.com/plataformatec/simple_form/issues/316
 
-inputs = %w[
+inputs = %w(
   CollectionSelectInput
   DateTimeInput
   FileInput
@@ -13,7 +13,7 @@ inputs = %w[
   RangeInput
   StringInput
   TextInput
-]
+)
 
 inputs.each do |input_type|
   superclass = "SimpleForm::Inputs::#{input_type}".constantize
@@ -47,8 +47,8 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: 'span', class: 'help-block has-error' }
   end
 
- config.wrappers :bootstrap3_horizontal, tag: 'div', class: 'form-group', error_class: 'has-error',
-      defaults: { input_html: { class: 'default-class '}, wrapper_html: { class: "col-lg-10 col-md-10"} } do |b|
+  config.wrappers :bootstrap3_horizontal, tag: 'div', class: 'form-group', error_class: 'has-error',
+      defaults: { input_html: { class: 'default-class ' }, wrapper_html: { class: "col-lg-10 col-md-10" } } do |b|
 
     b.use :html5
     b.use :min_max
@@ -67,7 +67,7 @@ SimpleForm.setup do |config|
   end
 
   config.wrappers :group, tag: 'div', class: "form-group", error_class: 'has-error',
-      defaults: { input_html: { class: 'default-class '} }  do |b|
+      defaults: { input_html: { class: 'default-class ' } }  do |b|
 
     b.use :html5
     b.use :min_max

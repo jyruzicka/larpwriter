@@ -1,7 +1,6 @@
 require "test_helper"
 
 class UserSignInTest < ActionDispatch::IntegrationTest
-
   test "it works when using correct credentials" do
     visit "/"
     click_link "Sign in"

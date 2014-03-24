@@ -25,7 +25,5 @@ Larpwriter::Application.routes.draw do
     end
   end
 
-  if Rails.env.development?
-    mount MailsViewer::Engine => '/delivered_mails'
-  end
+  mount MailsViewer::Engine => '/delivered_mails' if Rails.env.development?
 end

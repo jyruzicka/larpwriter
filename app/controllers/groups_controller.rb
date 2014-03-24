@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
 
   private
 
-  def get_asset
+  def get_asset # rubocop:disable AccessorMethodName
     @group = @larp.groups.find params[:id]
   end
 

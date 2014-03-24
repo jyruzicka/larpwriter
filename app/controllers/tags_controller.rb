@@ -26,7 +26,7 @@ class TagsController < ApplicationController
 
   private
 
-  def get_asset
+  def get_asset # rubocop:disable AccessorMethodName
     @tag = @larp.tags.find params[:id]
   end
 

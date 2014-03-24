@@ -11,7 +11,7 @@ class LarpsController < ApplicationController
 
   def create
     @larp = Larp.new larp_params
-    # FIXME better use a service object?
+    # FIXME: better use a service object?
     if @larp.save
       @larp.organizers.create! first_name: current_user.email[/[^@]+/], user: current_user, email: current_user.email
       redirect_to @larp, notice: "Your larp has been created!"
@@ -38,12 +38,11 @@ class LarpsController < ApplicationController
 
   private
 
-  def get_larp
+  def get_larp # rubocop:disable AccessorMethodName
     @larp = Larp.find params[:id]
   end
 
   def larp_params
     params[:larp].permit!
   end
-
 end

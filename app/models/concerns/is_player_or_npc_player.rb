@@ -10,8 +10,8 @@ module IsPlayerOrNpcPlayer
 
   def age
     "todo"
-    #now = Time.now.utc.to_date
-    #now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
+    # now = Time.now.utc.to_date
+    # now.year - birth_date.year - ((now.month > birth_date.month || (now.month == birth_date.month && now.day >= birth_date.day)) ? 0 : 1)
   end
 
   def name_with_pc_or_npc_names
