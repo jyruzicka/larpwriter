@@ -28,7 +28,7 @@ in `env.example` too
 
 ### Bootstrap upgrade
 
-When upgrade the Bootswatch theme in `vendor/assets/stylesheets`, change `url('../fonts/glyphicons-halfings-regular.eot')` and similar to `font-url('glyphicons-halfings-regular.eot')`.
+When upgrading the Bootswatch theme in `vendor/assets/stylesheets`, change `url('../fonts/glyphicons-halfings-regular.eot')` and similar to `font-url('glyphicons-halfings-regular.eot')`.
 
 ## Run tests
 

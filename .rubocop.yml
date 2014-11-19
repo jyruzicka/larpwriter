@@ -1,8 +1,13 @@
 AlignHash:
   EnforcedHashRocketStyle: table
 
+AllCops:
+  Excludes:
+    - db/schema.rb
+  RunRailsCops: true
+
 AssignmentInCondition:
-    AllowSafeAssignment: true
+  AllowSafeAssignment: true
 
 ClassAndModuleChildren:
   Enabled: false
@@ -16,9 +21,15 @@ LineLength:
 MethodDefParentheses:
   EnforcedStyle: require_no_parentheses
 
+MethodLength:
+  Max: 15
+
 PredicateName:
     NamePrefixBlacklist:
       - foo_
 
 StringLiterals:
   Enabled: false
+
+TrailingComma:
+  EnforcedStyleForMultiline: comma
